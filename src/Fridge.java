@@ -14,6 +14,10 @@ public class Fridge {
 //    }
 
 
+    public HashMap<Integer, WeightedIngredient> getWeightedIngredientHashMap() {
+        return weightedIngredientHashMap;
+    }
+
     public void addToFridge(WeightedIngredient weightedIngredient, double weigth){
         if(this.weightedIngredientHashMap.containsKey(weightedIngredient.getId())){
             for (int key : this.weightedIngredientHashMap.keySet()){
@@ -86,8 +90,13 @@ public class Fridge {
 
     @Override
     public String toString() {
-        return "Fridge{" +
-                "weightedIngredients=" + weightedIngredientHashMap +
-                '}';
+        if(weightedIngredientHashMap.isEmpty()){
+            return "Fridge is empty";
+
+        }else{
+            return "Fridge{" +
+                    "weightedIngredients=" + weightedIngredientHashMap +
+                    '}';
+        }
     }
 }

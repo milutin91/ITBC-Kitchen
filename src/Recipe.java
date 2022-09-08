@@ -34,7 +34,7 @@ public class Recipe implements Priceable {
     public void addIngrediantToRecipe(WeightedIngredient weightedIngredient, double weigth){
         weightedIngredient.setWeight(weigth);
 //        weightedIngredient.setPricePerUnit(price);
-        this.weightedIngredientHashMap.put(weightedIngredient.getId(), new WeightedIngredient(weightedIngredient));
+        this.weightedIngredientHashMap.put(weightedIngredient.getId(), weightedIngredient);
     }
 
     public void removeIngrediantFromRecipe(WeightedIngredient weightedIngredient) {

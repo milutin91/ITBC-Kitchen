@@ -75,6 +75,7 @@ public class Test {
         cheeesecake.addIngrediantToRecipe(sugar, 50);
         cheeesecake.addIngrediantToRecipe(raspberries, 400);
 
+
 //        7.
         Recipe scrambledEggs = new Recipe("SCRAMLED EGGS", new HashMap<Integer, WeightedIngredient>(), Level.EASY);
         scrambledEggs.addIngrediantToRecipe(eggs,4);
@@ -103,13 +104,17 @@ public class Test {
         friedEggsWithHam.addIngrediantToRecipe(salt, 5);
         friedEggsWithHam.addIngrediantToRecipe(ham, 100);
 
+        Fridge fridge = new Fridge(new HashMap<>());
+//        fridge.isEmpty();
+        fridge.addToFridge(salt, 50);
+        System.out.println(fridge);
 
-        Database d1 = new Database();
+//        Database d1 = new Database();
 //        d1.addToWIngrediantsDB(flour);
 //        d1.addToWIngrediantsDB(sugar);
 //        d1.addToWIngrediantsDB(salt);
 //        d1.addToWIngrediantsDB(yogurt);
-        System.out.println(d1);
+//        System.out.println(d1);
 
 //        Fridge fridge = new Fridge(new HashMap<>());
 //        fridge.addToFridge(eggs,20);
