@@ -6,6 +6,8 @@ public class WeightedIngredient extends Ingredient implements Priceable {
         super(name);
         this.weight = weight;
         this.pricePerUnit = pricePerUnit;
+
+        Database.dbAllIngrediants.add(this);
     }
     public  WeightedIngredient(WeightedIngredient weightedIngredient){
         super(weightedIngredient.getName());

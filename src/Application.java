@@ -23,6 +23,24 @@ public class Application {
         WeightedIngredient creamCheese = new WeightedIngredient("Cream cheese", 1000, 750);
         WeightedIngredient cream = new WeightedIngredient("Cream", 1000, 500);
         WeightedIngredient raspberries = new WeightedIngredient("Rraspberries", 1000, 1000);
+//        Database.dbAllIngrediants.add(flour);
+//        Database.dbAllIngrediants.add(sugar);
+//        Database.dbAllIngrediants.add(salt);
+//        Database.dbAllIngrediants.add(yogurt);
+//        Database.dbAllIngrediants.add(eggs);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Baking powder", 12, 2083.33);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Oil", 1000, 200);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Cheese", 1000, 600);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Ham", 1000, 700);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Milk", 1000, 120);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Jam", 1000, 400);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Chocolate", 1000, 1600);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Margarine", 1000, 400);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Plasma biscuit", 1000, 900);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Cream cheese", 1000, 750);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Cream", 1000, 500);
+//        Database.dbAllIngrediants.add(new WeightedIngredient("Rraspberries", 1000, 1000);
+
 
 
 //        1.
@@ -106,7 +124,16 @@ public class Application {
         muffin.addIngrediantToRecipe(ham, 100);
 
         System.out.println("---Welcome to kitchen---\n");
-        System.out.println("Please press: \n1. to add food\n2. to remove food");
+        System.out.println("""
+                Please press:\s
+                1. Open Fridge
+                2. Make a meal            
+                6. Which meals can u make for your money
+                7. Check level of recipes
+                8. Which meals(LEVEL) can u make for your money
+                9. Sort meals in level
+                10. Sort meals in price
+                11. Your favorit meals""");
         if(sc.nextInt() == 1){
             System.out.println("""
                     Add food:\s

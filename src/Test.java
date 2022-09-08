@@ -52,129 +52,69 @@ public class Test {
 
 //        4.
         Recipe honeyHeart = new Recipe("HONEY HEART", new HashMap<Integer, WeightedIngredient>(), Level.HARD);
-        muffin.addIngrediantToRecipe(sugar, 200);
-        muffin.addIngrediantToRecipe(flour, 400);
-        muffin.addIngrediantToRecipe(milk, 200);
-        muffin.addIngrediantToRecipe(jam, 100);
-        muffin.addIngrediantToRecipe(oil, 20);
+        honeyHeart.addIngrediantToRecipe(sugar, 200);
+        honeyHeart.addIngrediantToRecipe(flour, 400);
+        honeyHeart.addIngrediantToRecipe(milk, 200);
+        honeyHeart.addIngrediantToRecipe(jam, 100);
+        honeyHeart.addIngrediantToRecipe(oil, 20);
 
 //        5.
         Recipe souffle = new Recipe("SOUFFLE", new HashMap<Integer, WeightedIngredient>(), Level.PRO);
-        muffin.addIngrediantToRecipe(sugar, 190);
-        muffin.addIngrediantToRecipe(flour, 300);
-        muffin.addIngrediantToRecipe(chocolate, 200);
-        muffin.addIngrediantToRecipe(margarine, 250);
+        souffle.addIngrediantToRecipe(sugar, 190);
+        souffle.addIngrediantToRecipe(flour, 300);
+        souffle.addIngrediantToRecipe(chocolate, 200);
+        souffle.addIngrediantToRecipe(margarine, 250);
 
 //        6.
         Recipe cheeesecake = new Recipe("CHEESECAKE", new HashMap<Integer, WeightedIngredient>(), Level.HARD);
-        muffin.addIngrediantToRecipe(plasmaBiscuit,300);
-        muffin.addIngrediantToRecipe(margarine, 150);
-        muffin.addIngrediantToRecipe(creamCheese, 400);
-        muffin.addIngrediantToRecipe(sugar, 100);
-        muffin.addIngrediantToRecipe(cream, 250);
-        muffin.addIngrediantToRecipe(sugar, 50);
-        muffin.addIngrediantToRecipe(raspberries, 400);
+        cheeesecake.addIngrediantToRecipe(plasmaBiscuit,300);
+        cheeesecake.addIngrediantToRecipe(margarine, 150);
+        cheeesecake.addIngrediantToRecipe(creamCheese, 400);
+        cheeesecake.addIngrediantToRecipe(sugar, 100);
+        cheeesecake.addIngrediantToRecipe(cream, 250);
+        cheeesecake.addIngrediantToRecipe(sugar, 50);
+        cheeesecake.addIngrediantToRecipe(raspberries, 400);
 
 //        7.
         Recipe scrambledEggs = new Recipe("SCRAMLED EGGS", new HashMap<Integer, WeightedIngredient>(), Level.EASY);
-        muffin.addIngrediantToRecipe(eggs,4);
-        muffin.addIngrediantToRecipe(oil, 10);
-        muffin.addIngrediantToRecipe(salt, 1);
+        scrambledEggs.addIngrediantToRecipe(eggs,4);
+        scrambledEggs.addIngrediantToRecipe(oil, 10);
+        scrambledEggs.addIngrediantToRecipe(salt, 1);
 
 //        8.
         Recipe sconesWithCheese = new Recipe("SCONES WITH CHEESE", new HashMap<Integer, WeightedIngredient>(), Level.HARD);
-        muffin.addIngrediantToRecipe(milk,200);
-        muffin.addIngrediantToRecipe(sugar, 10);
-        muffin.addIngrediantToRecipe(flour, 300);
-        muffin.addIngrediantToRecipe(salt, 8);
-        muffin.addIngrediantToRecipe(eggs, 1);
+        sconesWithCheese.addIngrediantToRecipe(milk,200);
+        sconesWithCheese.addIngrediantToRecipe(sugar, 10);
+        sconesWithCheese.addIngrediantToRecipe(flour, 300);
+        sconesWithCheese.addIngrediantToRecipe(salt, 8);
+        sconesWithCheese.addIngrediantToRecipe(eggs, 1);
 
 //        9.
         Recipe pizzaDough = new Recipe("PIZZA DOUGH", new HashMap<Integer, WeightedIngredient>(), Level.PRO);
-        muffin.addIngrediantToRecipe(flour, 300);
-        muffin.addIngrediantToRecipe(oil,15);
-        muffin.addIngrediantToRecipe(salt, 8);
-        muffin.addIngrediantToRecipe(sugar, 8);
+        pizzaDough.addIngrediantToRecipe(flour, 300);
+        pizzaDough.addIngrediantToRecipe(oil,15);
+        pizzaDough.addIngrediantToRecipe(salt, 8);
+        pizzaDough.addIngrediantToRecipe(sugar, 8);
 
 //        10.
         Recipe friedEggsWithHam = new Recipe("FRIED EGGS WITH HAM", new HashMap<Integer, WeightedIngredient>(), Level.MEDIUM);
-        muffin.addIngrediantToRecipe(eggs, 3);
-        muffin.addIngrediantToRecipe(oil,10);
-        muffin.addIngrediantToRecipe(salt, 5);
-        muffin.addIngrediantToRecipe(ham, 100);
+        friedEggsWithHam.addIngrediantToRecipe(eggs, 3);
+        friedEggsWithHam.addIngrediantToRecipe(oil,10);
+        friedEggsWithHam.addIngrediantToRecipe(salt, 5);
+        friedEggsWithHam.addIngrediantToRecipe(ham, 100);
 
 
         Database d1 = new Database();
-        d1.addToWIngrediantsDB(flour);
-        d1.addToWIngrediantsDB(sugar);
-        d1.addToWIngrediantsDB(salt);
-        d1.addToWIngrediantsDB(yogurt);
-
-        System.out.println(d1);
-        d1.addToWIngrediantsDB(flour);
-        System.out.println();
-        d1.addToRecipesDB(spanishPita);
-        d1.addToRecipesDB(fastPiroshka);
+//        d1.addToWIngrediantsDB(flour);
+//        d1.addToWIngrediantsDB(sugar);
+//        d1.addToWIngrediantsDB(salt);
+//        d1.addToWIngrediantsDB(yogurt);
         System.out.println(d1);
 
-        System.out.println(flour.getPrice());
-        System.out.println();
-        System.out.println(fastPiroshka.getPrice());
-
-//
-//        System.out.println(r1);
-//        System.out.println();
-////        System.out.println(r1);
-////        System.out.println();
-////        r1.addIngrediantToRecipe(w1);
-////        r1.addIngrediantToRecipe(w2);
-////        r1.addIngrediantToRecipe(w3);
-////        System.out.println(r1);
-////        System.out.println();
-////        r1.removeIngrediantFromRecipe(w1);
-////        r1.removeIngrediantFromRecipe(w2);
-////        r1.removeIngrediantFromRecipe(w3);
-////        System.out.println(r1);
-////        System.out.println();
-////        r1.removeIngrediantFromRecipe(w2);
-////        r1.removeIngrediantFromRecipe(w1);
-////        r1.removeIngrediantFromRecipe(w3);
-//
-////        System.out.println(r1);
-////        Recipe r2 = new Recipe("eqw",new LinkedList<>(Arrays.asList(
-////                new WeightedIngredient("zejtin",10,10),
-////                new WeightedIngredient("jaja", 2, 2),
-////                new WeightedIngredient("so", 5, 20))));
-////        r1.getScaledRecipe(33);
-////        System.out.println(r1);
-//
-//        Fridge f1 = new Fridge(new HashMap<>());
-//        f1.addToFridge(w1,200);
-//        f1.addToFridge(w2,300);
-//        f1.addToFridge(w3,1001);
-//        f1.addToFridge(w1,100);
-//        System.out.println(f1);
-////        f1.removeFromFridge(w2,300);
-//        System.out.println();
-//        System.out.println(f1);
-//        System.out.println();
-//        System.out.println(r1);
-//        System.out.println();
-////        System.out.println(r1);
-//        System.out.println(f1.canMakeMeal(r1));
-////        f1.removeFromFridge(w1, 250);
-//        System.out.println(f1);
-//        System.out.println(f1.canMakeMeal(r1));
-//        f1.makeMeal(r1);
-//        System.out.println();
-//        System.out.println(f1);
-////        f1.addToFridge(w1,1000);
-////        System.out.println(f1);
-////        System.out.println(f1.canMakeMeal(r1));
-////        System.out.println(f1);
-////        System.out.println(f1.canMakeMeal(r1));
-
-
-
+//        Fridge fridge = new Fridge(new HashMap<>());
+//        fridge.addToFridge(eggs,20);
+//        fridge.addToFridge(eggs,20);
+//        fridge.removeFromFridge(eggs,39);
+//        System.out.println(fridge);
     }
 }

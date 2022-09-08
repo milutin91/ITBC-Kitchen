@@ -12,6 +12,7 @@ public class Recipe implements Priceable {
         this.name = name;
         this.weightedIngredientHashMap = weightedIngredientHashMap;
         this.level = level;
+        Database.dbAllRecipes.add(this);
     }
 
     public String getName() {
