@@ -1,10 +1,11 @@
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Application {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        Fridge fridge = new Fridge(new HashMap<>());
+        Fridge fridge = new Fridge(new LinkedList<>());
 
         WeightedIngredient flour = new WeightedIngredient("Flour", 1000, 85);
         WeightedIngredient sugar = new WeightedIngredient("Sugar", 1000, 103);
@@ -105,7 +106,7 @@ public class Application {
         muffin.addIngrediantToRecipe(salt, 5);
         muffin.addIngrediantToRecipe(ham, 100);
 
-        int choice = 0;
+        int choice;
 
         System.out.println("---Welcome to kitchen---\n");
         boolean flag = true;
@@ -114,49 +115,15 @@ public class Application {
                     Please press:\s
                     1. Open Fridge
                     2. Make a meal
-                    3. Which meals can u make for your money
-                    4. Check level of recipes
-                    5. Which meals(LEVEL) can u make for your money
-                    6. Sort meals in level
-                    7. Sort meals in price
-                    8. Your favorit meals
+                    3. Filter recipes
+                    4. Sorting recipes
                     0. Leave kitchen""");
             choice = sc.nextInt();
             switch (choice) {
-                case 1:
-                    System.out.println(fridge);
-                    System.out.println();
-                    boolean flag2 = true;
-                    while (flag2) {
-                        System.out.println("1. Add ingrediant\n2. Take ingrediant\n0. Go back");
-                        choice = sc.nextInt();
-                        switch (choice) {
-                            case 1:
-                                int count = 0;
-                                for (var el : Database.dbAllIngrediants) {
-                                    count++;
-                                    System.out.println(count + ". " + el.getName());
-                                }
-                                choice = sc.nextInt();
-                                for (var el : Database.dbAllIngrediants) {
-                                    if (choice == el.getId()) {
-                                        System.out.println("Weight?");
-                                        fridge.addToFridge(el, sc.nextInt());
-                                    }
-                                }
-                                break;
-                            case 0:
-                                flag2 = false;
-                                break;
-                        }
-                        System.out.println(fridge);
-                    }
+                case 0:
+                    System.out.println("Goodbye");
+                    flag = false;
                     break;
-
-            case 0:
-                System.out.println("Goodbye");
-                flag = false;
-
 //            case 3:
 //            case 4:
 //            case 5:
@@ -185,6 +152,81 @@ public class Application {
 //                    15. Cream cheese
 //                    16. Cream
 //                    17. Rraspberries""");
+                case 1:
+                    System.out.println(fridge);
+                    System.out.println();
+                    boolean flag2 = true;
+                    while (flag2) {
+                        System.out.println("1. Add ingrediant\n2. Take ingrediant\n0. Go back");
+                        choice = sc.nextInt();
+                        switch (choice) {
+                            case 0:
+                                flag2 = false;
+                                break;
+                            case 1:
+                                fridge.addToFridge();
+//                                int count = 0;
+//                                for (var el : Database.dbAllIngrediants) {
+//                                    count++;
+//                                    System.out.println(count + ". " + el.getName());
+//                                }
+//                                choice = sc.nextInt();
+//                                for (var el : Database.dbAllIngrediants) {
+//                                    if (choice == el.getId()) {
+//                                        System.out.println("Weight?");
+//                                        fridge.addToFridge(el, sc.nextInt());
+//                                    }
+//                                }
+                                break;
+                            case 2:
+                                fridge.removeFromFridge();
+                                break;
+                            default:
+                                System.out.println("Choose again!");
+                                break;
+//                                int count = 0;
+//                                for (var el : fridge.getWeightedIngredients()) {
+//                                    count++;
+//                                    System.out.println(count + ". " + el.getName());
+//                                }
+//                                choice = sc.nextInt();
+//
+//                                count = 0;
+//                                for (int i = 0; i < fridge.getWeightedIngredients().size(); i++) {
+//                                    count++;
+//                                    if (count == choice) {
+//                                        System.out.println("Weight?");
+//                                        fridge.removeFromFridge(fridge.getWeightedIngredients().get(choice-1), sc.nextInt());
+//                                        break;
+//                                    }
+//                                }
+                        }
+                        System.out.println(fridge);
+                    }
+                    break;
+                case 2:
+                    boolean flag3 = true;
+                    while (flag3){
+                        System.out.println("""
+                    Please press:\s
+                    1. Which recipes do you have ingrediants for
+                    2. Which scaled recipes do you have ingrediants for
+                    3. Make meal
+                    0. Go back""");
+                        choice = sc.nextInt();
+                        switch (choice){
+                            case 0:
+                                flag3 = false;
+                                break;
+                            case 1:
+
+                            case 2:
+                            case 3:
+                        }
+                    }
+                default:
+                    System.out.println("Choose again!");
+                    break;
             }
         }
     }

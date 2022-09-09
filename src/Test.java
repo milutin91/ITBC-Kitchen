@@ -104,7 +104,7 @@ public class Test {
         friedEggsWithHam.addIngrediantToRecipe(salt, 5);
         friedEggsWithHam.addIngrediantToRecipe(ham, 100);
 
-        Fridge fridge = new Fridge(new HashMap<>());
+        Fridge fridge = new Fridge(new LinkedList<>());
 //        fridge.isEmpty();
         fridge.addToFridge(salt, 50);
         System.out.println(fridge);

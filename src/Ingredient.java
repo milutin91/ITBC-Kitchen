@@ -31,6 +31,6 @@ public abstract class Ingredient implements Priceable {
 
     @Override
     public String toString() {
-        return "id= " + id + "\nname= " + name;
+        return this.name;
     }
 }

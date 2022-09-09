@@ -1,6 +1,7 @@
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Database {
     public static List<Recipe> dbAllRecipes = new LinkedList<>();
@@ -38,6 +39,21 @@ public class Database {
             System.out.println(weightedIngredient.getName() + " alredy exsist");
         }
     }
+//    public void addToFridge(int choice, Fridge fridge){
+//        Scanner sc = new Scanner(System.in);
+//        int count = 0;
+//        for (var el : dbAllIngrediants) {
+//            count++;
+//            System.out.println(count + ". " + el.getName());
+//        }
+//        choice = sc.nextInt();
+//        for (var el : dbAllIngrediants) {
+//            if (choice == el.getId()) {
+//                System.out.println("Weight?");
+//                fridge.addToFridge(el, sc.nextInt());
+//            }
+//        }
+//    }
 
     @Override
     public String toString() {

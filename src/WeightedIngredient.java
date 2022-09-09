@@ -38,6 +38,6 @@ public class WeightedIngredient extends Ingredient implements Priceable {
 
     @Override
     public String toString() {
-        return super.toString() + " wigth-" + weight + " price-" + pricePerUnit;
+        return super.toString() + " - weigth-" + weight + "g(whole product)\n";
     }
 }
