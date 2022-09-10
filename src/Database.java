@@ -1,16 +1,14 @@
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class Database {
     public static List<Recipe> dbAllRecipes = new LinkedList<>();
 
+
     public static List<WeightedIngredient> dbAllIngrediants = new LinkedList<>();
 
-    public Database() {
-
-    }
+//    public Database() {
+//
+//    }
 
     public void addToRecipesDB(Recipe recipe) {
         int count = 0;

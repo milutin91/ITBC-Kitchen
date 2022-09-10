@@ -18,8 +18,9 @@ public class Fridge {
     public void addToFridge(WeightedIngredient weightedIngredient, double weigth) {
         if (this.weightedIngredients.contains(weightedIngredient)) {
             for (var el : this.weightedIngredients) {
-                if (el == weightedIngredient) {
-                    weightedIngredient.setWeight(weightedIngredient.getWeight() + weigth);
+                if (Objects.equals(el.getName(), weightedIngredient.getName())) {
+                    el.setWeight(el.getWeight() + weigth);
+                    break;
                 }
             }
 //            for (int key : this.weightedIngredientHashMap.keySet()){
@@ -29,9 +30,15 @@ public class Fridge {
 //            }
         } else {
             this.weightedIngredients.add(weightedIngredient);
+            for (var el : this.weightedIngredients) {
+                if (Objects.equals(el.getName(), weightedIngredient.getName())) {
+                    el.setWeight(el.getWeight() + weigth);
+                    break;
+                }
+            }
 //            for(int key : this.weightedIngredientHashMap.keySet()){
 //                if(key == weightedIngredient.getId())
-            weightedIngredient.setWeight(weigth);
+//            weightedIngredient.setWeight(weightedIngredient.getWeight());
 //            }
 //            weightedIngredient.setWeight(weigth);
         }
@@ -97,25 +104,30 @@ public class Fridge {
     //
     public boolean canMakeMeal(Recipe recipe) {
         boolean flag = false;
-        int countIngrediants = 0;
-        int checkWeigth = 0;
-        for (WeightedIngredient elRecipe : recipe.weightedIngredientHashMap.values()) {
-            for (WeightedIngredient elFridge : weightedIngredients) {
-                if (Objects.equals(elRecipe.getName(), elFridge.getName())) {
-                    if (elRecipe.getWeight() > elFridge.getWeight()) {
-                        checkWeigth++;
+//        if(this.weightedIngredients.isEmpty()){
+//            System.out.println("Fridge is empty!");
+//            return flag;
+//        }else{
+            int countIngrediants = 0;
+            int checkWeigth = 0;
+            for (WeightedIngredient elRecipe : recipe.weightedIngredients) {
+                for (WeightedIngredient elFridge : this.weightedIngredients) {
+                    if (elRecipe.getName().equals(elFridge.getName())) {
+                        if (elRecipe.getWeight() > elFridge.getWeight()) {
+                            checkWeigth++;
+                        }
+                        countIngrediants++;
                     }
-                    countIngrediants++;
                 }
-            }
+//            }
         }
-        return countIngrediants == recipe.weightedIngredientHashMap.size() && checkWeigth == 0;
+        return countIngrediants == recipe.weightedIngredients.size() && checkWeigth == 0;
     }
 
     public void makeMeal(Recipe recipe) {
         if (this.canMakeMeal(recipe)) {
             for (WeightedIngredient elFridge : this.weightedIngredients) {
-                for (WeightedIngredient elRecipe : recipe.weightedIngredientHashMap.values()) {
+                for (WeightedIngredient elRecipe : recipe.weightedIngredients) {
                     if (Objects.equals(elFridge.getName(), elRecipe.getName())) {
                         this.removeFromFridge(elFridge, elRecipe.getWeight());
                     }

@@ -18,8 +18,9 @@
         1. Check all recipes for specified money
         2. Check all recipes with specified level
         3. Combo of 1 and 2
+        0. Go back
     4. Sorting recipes
-        4. Sort recipe by level
-        5. Sort recipe by price
+        1. Sort recipe by level
+        2. Sort recipe by price
         0. Go back
     0. Exit aplication
