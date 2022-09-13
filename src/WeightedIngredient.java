@@ -1,43 +1,43 @@
 public class WeightedIngredient extends Ingredient implements Priceable {
-    private double weight;
+    private double weightRecipe;
+    private double weigthFridge;
     private final double pricePerUnit;
 
-    public WeightedIngredient(String name, double weight, double pricePerUnit) {
+    public WeightedIngredient(String name, double weightRecipe, double pricePerUnit) {
         super(name);
-        this.weight = weight;
+        this.weightRecipe = weightRecipe;
         this.pricePerUnit = pricePerUnit;
 
         Database.dbAllIngrediants.add(this);
     }
-    public  WeightedIngredient(WeightedIngredient weightedIngredient){
-        super(weightedIngredient.getName());
-        this.weight = weightedIngredient.weight;
-        this.pricePerUnit = weightedIngredient.pricePerUnit;
+
+    public double getWeigthFridge() {
+        return weigthFridge;
     }
 
-    public double getWeight() {
-        return weight;
+    public void setWeigthFridge(double weigthFridge) {
+        this.weigthFridge = weigthFridge;
     }
 
-    public void setWeight(double weight) {
-        this.weight = weight;
+    public double getWeightRecipe() {
+        return weightRecipe;
+    }
+
+    public void setWeightRecipe(double weightRecipe) {
+        this.weightRecipe = weightRecipe;
     }
 
     public double getPricePerUnit() {
         return pricePerUnit;
     }
 
-//    public void setPricePerUnit(double pricePerUnit) {
-//        this.pricePerUnit = pricePerUnit;
-//    }
-
     @Override
     public double getPrice() {
-        return weight * (this.pricePerUnit / 1000);
+        return weightRecipe * (this.pricePerUnit / 1000);
     }
 
     @Override
     public String toString() {
-        return super.toString() + " - weigth-" + weight + "g(whole product)\n";
+        return super.toString() + " - weigth fridge- " + weigthFridge + " - weigth recipe- " + weightRecipe + "g(whole product)\n";
     }
 }

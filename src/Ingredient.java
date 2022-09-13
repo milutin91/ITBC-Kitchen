@@ -1,8 +1,8 @@
 public abstract class Ingredient implements Priceable {
     private static int count = 1;
 
-    private int id;
-    private String name;
+    private final int id;
+    private final String name;
 
     public Ingredient(String name) {
         this.id = count++;
@@ -17,16 +17,8 @@ public abstract class Ingredient implements Priceable {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public String getName() {
         return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     @Override

@@ -1,11 +1,10 @@
 import java.util.*;
-import java.util.stream.Collectors;
 
 public class Application {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Fridge fridge = new Fridge(new LinkedList<>());
-        List<Recipe> filterSortRecipes;
+        Database database = new Database();
 
         WeightedIngredient flour = new WeightedIngredient("Flour", 1000, 85);
         WeightedIngredient sugar = new WeightedIngredient("Sugar", 1000, 103);
@@ -117,6 +116,7 @@ public class Application {
                     2. Make a meal
                     3. Filter recipes
                     4. Sorting recipes
+                    5. Favourite recipes
                     0. Leave kitchen""");
             choice = sc.nextInt();
             switch (choice) {
@@ -124,34 +124,6 @@ public class Application {
                     System.out.println("Goodbye");
                     flag = false;
                     break;
-//            case 3:
-//            case 4:
-//            case 5:
-//            case 6
-//            case 7:
-//            case 8:
-//        }
-
-//                System.out.println("1. Add ingrediant\n2. Remove ingrediant\n0. Go back");
-//            System.out.println("""
-//                    Add food:\s
-//                    1. Flour
-//                    2. Sugar
-//                    3. Salt
-//                    4. Yogurt
-//                    5. Eggs
-//                    6. Baking powder
-//                    7. Oil
-//                    8. Cheese
-//                    9. Ham
-//                    10. Milk
-//                    11. Jam
-//                    12. Chocolate
-//                    13. Margarine
-//                    14. Plasma biscuit
-//                    15. Cream cheese
-//                    16. Cream
-//                    17. Rraspberries""");
                 case 1:
                     System.out.println(fridge);
                     System.out.println();
@@ -169,18 +141,6 @@ public class Application {
                                 break;
                             case 1:
                                 fridge.addToFridge();
-//                                int count = 0;
-//                                for (var el : Database.dbAllIngrediants) {
-//                                    count++;
-//                                    System.out.println(count + ". " + el.getName());
-//                                }
-//                                choice = sc.nextInt();
-//                                for (var el : Database.dbAllIngrediants) {
-//                                    if (choice == el.getId()) {
-//                                        System.out.println("Weight?");
-//                                        fridge.addToFridge(el, sc.nextInt());
-//                                    }
-//                                }
                                 break;
                             case 2:
                                 fridge.removeFromFridge();
@@ -188,22 +148,6 @@ public class Application {
                             default:
                                 System.out.println("Choose again!");
                                 break;
-//                                int count = 0;
-//                                for (var el : fridge.getWeightedIngredients()) {
-//                                    count++;
-//                                    System.out.println(count + ". " + el.getName());
-//                                }
-//                                choice = sc.nextInt();
-//
-//                                count = 0;
-//                                for (int i = 0; i < fridge.getWeightedIngredients().size(); i++) {
-//                                    count++;
-//                                    if (count == choice) {
-//                                        System.out.println("Weight?");
-//                                        fridge.removeFromFridge(fridge.getWeightedIngredients().get(choice-1), sc.nextInt());
-//                                        break;
-//                                    }
-//                                }
                         }
                         System.out.println(fridge);
                     }
@@ -242,35 +186,34 @@ public class Application {
                             case 2:
                                 break;
                             case 3:
+                                count = 0;
+                                for (var el : Database.dbAllRecipes) {
+                                    if (fridge.canMakeMeal(el)) {
+                                        count++;
+                                    }
+                                }
+                                if (count == 0) {
+                                    System.out.println("You can' t make any meal!");
+                                } else {
+                                    count = 0;
+                                    for (var el : Database.dbAllRecipes) {
+                                        if (fridge.canMakeMeal(el)) {
+                                            count++;
+                                            System.out.println(count + ". " + el.getName());
+                                        }
+                                    }
+                                }
+                                count = 0;
+                                choice = sc.nextInt();
+                                for (var el : Database.dbAllRecipes) {
+                                    if (fridge.canMakeMeal(el)) {
+                                        count++;
+                                        if (choice == count) {
+                                            fridge.makeMeal(el);
+                                        }
+                                    }
+                                }
                                 break;
-//                                count = 0;
-//                                for (var el : Database.dbAllRecipes) {
-//                                    if (fridge.canMakeMeal(el)) {
-//                                        count++;
-//                                    }
-//                                }
-//                                if (count == 0) {
-//                                    System.out.println("You can' t make any meal!");
-//                                } else {
-//                                    count = 0;
-//                                    for (var el : Database.dbAllRecipes) {
-//                                        if (fridge.canMakeMeal(el)) {
-//                                            count++;
-//                                            System.out.println(count + ". " + el.getName() + el.weightedIngredients);
-//                                        }
-//                                    }
-//                                    choice = sc.nextInt();
-//                                    count = 0;
-//                                    for (var el : Database.dbAllRecipes) {
-//                                        if (fridge.canMakeMeal(el)) {
-//                                            count++;
-//                                        }
-//                                        if (choice == count) {
-//                                            fridge.makeMeal(el);
-//                                        }
-//                                    }
-//                                    break;
-//                                }
                             default:
                                 System.out.println("Choose again!");
                                 break;
@@ -307,16 +250,12 @@ public class Application {
                                             System.out.println("Filter by money: ");
                                             System.out.println("How much money do you have?");
                                             double money = sc.nextDouble();
-                                            System.out.println("You can make: ");
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getPrice() <= (money)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            database.filterMoney(money);
                                             break;
                                         default:
                                             System.out.println("Choose again!");
                                             break;
                                     }
-
                                 }
                                 break;
                             case 2:
@@ -336,29 +275,19 @@ public class Application {
                                             flag6 = false;
                                             break;
                                         case 1:
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getLevel().equals(Level.BEGINNER)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            database.filterLevel(Level.BEGINNER);
                                             break;
                                         case 2:
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getLevel().equals(Level.EASY)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            database.filterLevel(Level.EASY);
                                             break;
                                         case 3:
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getLevel().equals(Level.MEDIUM)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            database.filterLevel(Level.MEDIUM);
                                             break;
                                         case 4:
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getLevel().equals(Level.HARD)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            database.filterLevel(Level.HARD);
                                             break;
                                         case 5:
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getLevel().equals(Level.PRO)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            database.filterLevel(Level.PRO);
                                             break;
                                         default:
                                             System.out.println("Choose again!");
@@ -384,48 +313,28 @@ public class Application {
                                             break;
                                         case 1:
                                             System.out.println("How much money do you have?");
-                                            double money2 = sc.nextDouble();
-                                            System.out.println("You can make BEGINER: ");
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getLevel().equals(Level.BEGINNER))
-                                                    .filter(recipe -> recipe.getPrice() <= (money2)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            double money = sc.nextDouble();
+                                            database.filterMoneyLevel(money, Level.BEGINNER);
                                             break;
                                         case 2:
                                             System.out.println("How much money do you have?");
-                                            double money3 = sc.nextDouble();
-                                            System.out.println("You can make EASY: ");
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getLevel().equals(Level.EASY))
-                                                    .filter(recipe -> recipe.getPrice() <= (money3)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            money = sc.nextDouble();
+                                            database.filterMoneyLevel(money, Level.EASY);
                                             break;
                                         case 3:
                                             System.out.println("How much money do you have?");
-                                            double money4 = sc.nextDouble();
-                                            System.out.println("You can make MEDIUM: ");
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getLevel().equals(Level.MEDIUM))
-                                                    .filter(recipe -> recipe.getPrice() <= (money4)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            money = sc.nextDouble();
+                                            database.filterMoneyLevel(money, Level.MEDIUM);
                                             break;
                                         case 4:
                                             System.out.println("How much money do you have?");
-                                            double money5 = sc.nextDouble();
-                                            System.out.println("You can make HARD: ");
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getLevel().equals(Level.HARD))
-                                                    .filter(recipe -> recipe.getPrice() <= (money5)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            money = sc.nextDouble();
+                                            database.filterMoneyLevel(money, Level.HARD);
                                             break;
                                         case 5:
                                             System.out.println("How much money do you have?");
-                                            double money6 = sc.nextDouble();
-                                            System.out.println("You can make PRO: ");
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .filter(recipe -> recipe.getLevel().equals(Level.PRO))
-                                                    .filter(recipe -> recipe.getPrice() <= (money6)).toList();
-                                            filterSortRecipes.forEach(System.out::println);
+                                            money = sc.nextDouble();
+                                            database.filterMoneyLevel(money, Level.PRO);
                                             break;
                                         default:
                                             System.out.println("Choose again!");
@@ -463,16 +372,10 @@ public class Application {
                                             flag9 = false;
                                             break;
                                         case 1:
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .sorted(Comparator.comparing(Recipe::getLevel))
-                                                    .collect(Collectors.toList());
-                                            filterSortRecipes.forEach(System.out::println);
+                                            database.sortRecipesLevelIncrease();
                                             break;
                                         case 2:
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .sorted(Comparator.comparing(Recipe::getLevel).reversed())
-                                                    .collect(Collectors.toList());
-                                            filterSortRecipes.forEach(System.out::println);
+                                            database.sortRecipesLevelDecrease();
                                             break;
                                         default:
                                             System.out.println("Choose again!");
@@ -494,21 +397,61 @@ public class Application {
                                             flag10 = false;
                                             break;
                                         case 1:
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .sorted(Comparator.comparing(Recipe::getPrice))
-                                                    .collect(Collectors.toList());
-                                            filterSortRecipes.forEach(System.out::println);
+                                            database.sortRecipesMoneyIncrease();
                                             break;
                                         case 2:
-                                            filterSortRecipes = Database.dbAllRecipes.stream()
-                                                    .sorted(Comparator.comparing(Recipe::getPrice).reversed())
-                                                    .collect(Collectors.toList());
-                                            filterSortRecipes.forEach(System.out::println);
+                                            database.sortRecipesMoneyDecrease();
                                             break;
                                         default:
                                             System.out.println("Choose again!");
                                             break;
                                     }
+                                }
+                                break;
+                            default:
+                                System.out.println("Choose again!");
+                                break;
+                        }
+                    }
+                    break;
+                case 5:
+                    boolean flag11 = true;
+                    while (flag11) {
+                        if (Database.favouriteRecipes.isEmpty()){
+                            System.out.println("You don't have favourites!");
+                        } else {
+                            System.out.println("Your favourites:");
+                        }
+                        int count = 0;
+                        for (var el : Database.favouriteRecipes) {
+                            count++;
+                            System.out.println(count + ". " + el.getName());
+                        }
+                        System.out.println();
+                        System.out.println("""
+                                Choose what to do:\s
+                                1. Add to favourites
+                                2. Remove from favourites
+                                3. Favourite recipes for specified money
+                                0. Go back""");
+                        choice = sc.nextInt();
+                        switch (choice) {
+                            case 0:
+                                flag11 = false;
+                                break;
+                            case 1:
+                                database.addFavourites();
+                                break;
+                            case 2:
+                                database.removeFavourites();
+                                break;
+                            case 3:
+                                if (Database.favouriteRecipes.isEmpty()){
+                                }else{
+                                    System.out.println("How much money do u have?");
+                                    double money = sc.nextDouble();
+
+                                    database.filterFavouriteMoney(money);
                                 }
                                 break;
                             default:

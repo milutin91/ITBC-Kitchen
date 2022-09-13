@@ -13,32 +13,22 @@ public class Recipe implements Priceable {
         this.weightedIngredients = weightedIngredients;
         this.level = level;
         Database.dbAllRecipes.add(this);
-//        Database.
     }
-    public Recipe(Recipe recipe) {
-
-        this.name = recipe.getName();
-        this.weightedIngredients = recipe.getWeightedIngredients();
-        this.level = recipe.getLevel();
-//        Database.
-    }
+//    public Recipe(Recipe recipe) {
+//
+//        this.name = recipe.getName();
+//        this.weightedIngredients = recipe.getWeightedIngredients();
+//        this.level = recipe.getLevel();
+//    }
 
 
     public String getName() {
         return name;
     }
 
-//    public void setName(String name) {
-//        this.name = name;
-//    }
-
     public Level getLevel() {
         return level;
     }
-
-//    public void setLevel(Level level) {
-//        this.level = level;
-//    }
 
     public ArrayList<WeightedIngredient> getWeightedIngredients() {
         return weightedIngredients;
@@ -48,13 +38,12 @@ public class Recipe implements Priceable {
         if(this.weightedIngredients.contains(weightedIngredient)){
             for (var el: this.weightedIngredients){
                 if(el.getName().equals(weightedIngredient.getName())){
-                    el.setWeight(el.getWeight() + weigth);
+                    el.setWeightRecipe(el.getWeightRecipe() + weigth);
                 }
             }
         }else{
             this.weightedIngredients.add(weightedIngredient);
-            weightedIngredient.setWeight(weigth);
-//        weightedIngredient.setPricePerUnit(price);
+            weightedIngredient.setWeightRecipe(weigth);
         }
     }
 
@@ -65,7 +54,7 @@ public class Recipe implements Priceable {
     public Recipe getScaledRecipe(double percent) {
         new Recipe(this.name, this.weightedIngredients, this.level);
         for (WeightedIngredient el : this.weightedIngredients) {
-            el.setWeight(percent / 100 * el.getWeight());
+            el.setWeightRecipe(percent / 100 * el.getWeightRecipe());
         }
         return new Recipe(this.name, this.weightedIngredients, this.level);
     }
@@ -82,6 +71,6 @@ public class Recipe implements Priceable {
     @Override
     public String toString() {
         return "Recipe name= " + this.name + ", Level= " + this.level + ", Price= " + this.getPrice() +
-                "\nIngredients of " + this.name + ":\n" + weightedIngredients;
+                "\nIngredients of " + this.name + ":\n" + this.weightedIngredients;
     }
 }

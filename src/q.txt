@@ -14,18 +14,20 @@
         2. Which scaled recipes do you have ingrediants for
         3. Make meal
         0. Go back
-    3. Filter recipes
-        1. Check all recipes for specified money
-        2. Check all recipes with specified level
-        3. Combo of 1 and 2
-        0. Go back
-    4. Sorting recipes
-        1. Sort recipe by level
-        2. Sort recipe by price
-        0. Go back
-    5. Favourite recipes
-        1. Your favourite recipes
-        2. Add or remove favourite recipes
-        3. Favourite recipes for specified money
-        0. Go back
-    0. Exit aplication
+    3. Filter recipes                             ✔
+        1. Check all recipes for specified money  ✔
+        2. Check all recipes with specified level ✔
+        3. Combo of 1 and 2                       ✔
+        0. Go back                                ✔
+    4. Sorting recipes                            ✔
+        1. Sort recipe by level                   ✔
+        2. Sort recipe by price                   ✔
+        0. Go back                                ✔
+    5. Favourite recipes                          ✔
+            1. Add to favourites                  ✔
+                (show all recipes and choose)
+            2. Remove from favourites             ✔
+            3. Favourite recipes for specified money✔
+            0. Go back                            ✔
+        0. Go back                                ✔
+    0. Exit aplication                            ✔

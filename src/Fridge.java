@@ -6,10 +6,6 @@ public class Fridge {
     public Fridge(LinkedList<WeightedIngredient> weightedIngredients) {
         this.weightedIngredients = weightedIngredients;
     }
-//    public Fridge(){
-//
-//    }
-
 
     public LinkedList<WeightedIngredient> getWeightedIngredients() {
         return weightedIngredients;
@@ -19,28 +15,18 @@ public class Fridge {
         if (this.weightedIngredients.contains(weightedIngredient)) {
             for (var el : this.weightedIngredients) {
                 if (Objects.equals(el.getName(), weightedIngredient.getName())) {
-                    el.setWeight(el.getWeight() + weigth);
+                    el.setWeigthFridge(el.getWeigthFridge() + weigth);
                     break;
                 }
             }
-//            for (int key : this.weightedIngredientHashMap.keySet()){
-//                if (key == weightedIngredient.getId()){
-//                    weightedIngredient.setWeight(weightedIngredient.getWeight() + weigth);
-//                }
-//            }
         } else {
             this.weightedIngredients.add(weightedIngredient);
             for (var el : this.weightedIngredients) {
                 if (Objects.equals(el.getName(), weightedIngredient.getName())) {
-                    el.setWeight(el.getWeight() + weigth);
+                    el.setWeigthFridge(el.getWeigthFridge() + weigth);
                     break;
                 }
             }
-//            for(int key : this.weightedIngredientHashMap.keySet()){
-//                if(key == weightedIngredient.getId())
-//            weightedIngredient.setWeight(weightedIngredient.getWeight());
-//            }
-//            weightedIngredient.setWeight(weigth);
         }
     }
 
@@ -62,20 +48,11 @@ public class Fridge {
 
     public void removeFromFridge(WeightedIngredient weightedIngredient, double weigth) {
         if (this.weightedIngredients.contains(weightedIngredient)) {
-//            for (int key : this.weightedIngredientHashMap.keySet()) {
-//                if (key == weightedIngredient.getId()) {
-//                    if (weigth > weightedIngredient.getWeight()) {
-//                        this.weightedIngredientHashMap.remove(weightedIngredient.getId());
-//                    } else {
-//                        weightedIngredient.setWeight(weightedIngredient.getWeight() - weigth);
-//                    }
-//                }
-//            }
-            if (weigth >= weightedIngredient.getWeight()) {
+            if (weigth > weightedIngredient.getWeigthFridge()) {
                 this.weightedIngredients.remove(weightedIngredient);
                 System.out.println("Ingrediant " + weightedIngredient.getName() + " removed");
             } else {
-                weightedIngredient.setWeight(weightedIngredient.getWeight() - weigth);
+                weightedIngredient.setWeigthFridge(weightedIngredient.getWeigthFridge() - weigth);
             }
         } else {
             System.out.println("Alredy doesnt exist in fridge");
@@ -104,22 +81,17 @@ public class Fridge {
     //
     public boolean canMakeMeal(Recipe recipe) {
         boolean flag = false;
-//        if(this.weightedIngredients.isEmpty()){
-//            System.out.println("Fridge is empty!");
-//            return flag;
-//        }else{
             int countIngrediants = 0;
             int checkWeigth = 0;
             for (WeightedIngredient elRecipe : recipe.weightedIngredients) {
                 for (WeightedIngredient elFridge : this.weightedIngredients) {
                     if (elRecipe.getName().equals(elFridge.getName())) {
-                        if (elRecipe.getWeight() > elFridge.getWeight()) {
+                        if (elRecipe.getWeightRecipe() > elFridge.getWeigthFridge()) {
                             checkWeigth++;
                         }
                         countIngrediants++;
                     }
                 }
-//            }
         }
         return countIngrediants == recipe.weightedIngredients.size() && checkWeigth == 0;
     }
@@ -129,7 +101,7 @@ public class Fridge {
             for (WeightedIngredient elFridge : this.weightedIngredients) {
                 for (WeightedIngredient elRecipe : recipe.weightedIngredients) {
                     if (Objects.equals(elFridge.getName(), elRecipe.getName())) {
-                        this.removeFromFridge(elFridge, elRecipe.getWeight());
+                        this.removeFromFridge(elFridge, elRecipe.getWeightRecipe());
                     }
                 }
             }
@@ -139,22 +111,17 @@ public class Fridge {
         }
     }
 
-    public int ingrediantsNumber() {
-        return this.weightedIngredients.size();
-    }
-
-
-    public void printIngrediantsFridge() {
-        if (this.weightedIngredients.isEmpty()) {
-            System.out.println("Fridge is empty");
-        } else {
-            int count = 0;
-            for (var el : this.weightedIngredients) {
-                count++;
-                System.out.println(count + ". " + el.getName());
-            }
-        }
-    }
+//    public void printIngrediantsFridge() {
+//        if (this.weightedIngredients.isEmpty()) {
+//            System.out.println("Fridge is empty");
+//        } else {
+//            int count = 0;
+//            for (var el : this.weightedIngredients) {
+//                count++;
+//                System.out.println(count + ". " + el.getName());
+//            }
+//        }
+//    }
 
     @Override
     public String toString() {

@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 
 public class Test {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws CloneNotSupportedException {
         WeightedIngredient flour = new WeightedIngredient("Flour", 1000, 85);
         WeightedIngredient sugar = new WeightedIngredient("Sugar",1000,103);
         WeightedIngredient salt = new WeightedIngredient("Salt",1000,70);
@@ -145,6 +145,7 @@ public class Test {
         System.out.println("sconesWithCheese " + sconesWithCheese.getPrice());
         System.out.println("pizzaDough " + pizzaDough.getPrice());
         System.out.println("friedEggsWithHam " + friedEggsWithHam.getPrice());
+
 
 //        Database d1 = new Database();
 //        d1.addToWIngrediantsDB(flour);
