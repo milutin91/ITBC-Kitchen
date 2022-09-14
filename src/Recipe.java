@@ -34,6 +34,7 @@ public class Recipe implements Priceable {
         }
     }
 
+    //TODO Implement when weight problem is solved!
     public Recipe createScaledRecipe(double percent) {
         for (WeightedIngredient el : this.weightedIngredients) {
             el.setWeightRecipe(Math.round((percent / 100 * el.getWeightRecipe()) * 100) / 100.0);
