@@ -7,15 +7,11 @@ public class Fridge {
         this.weightedIngredients = weightedIngredients;
     }
 
-    public LinkedList<WeightedIngredient> getWeightedIngredients() {
-        return weightedIngredients;
-    }
-
     public void addToFridge(WeightedIngredient weightedIngredient, double weigth) {
         if (this.weightedIngredients.contains(weightedIngredient)) {
             for (var el : this.weightedIngredients) {
                 if (Objects.equals(el.getName(), weightedIngredient.getName())) {
-                    el.setWeigthFridge(el.getWeigthFridge() + weigth);
+                    el.setWeightFridge(el.getWeightFridge() + weigth);
                     break;
                 }
             }
@@ -23,7 +19,7 @@ public class Fridge {
             this.weightedIngredients.add(weightedIngredient);
             for (var el : this.weightedIngredients) {
                 if (Objects.equals(el.getName(), weightedIngredient.getName())) {
-                    el.setWeigthFridge(el.getWeigthFridge() + weigth);
+                    el.setWeightFridge(el.getWeightFridge() + weigth);
                     break;
                 }
             }
@@ -39,6 +35,10 @@ public class Fridge {
             System.out.println(count + ". " + el.getName());
         }
         System.out.println("---------------------");
+        while(!sc.hasNextInt()){
+            System.out.println("Input is not valid! Enter number!");
+            sc.nextLine();
+        }
         int choice = sc.nextInt();
         for (var el : Database.dbAllIngrediants) {
             if (choice == el.getId()) {
@@ -51,16 +51,17 @@ public class Fridge {
 
     public void removeFromFridge(WeightedIngredient weightedIngredient, double weigth) {
         if (this.weightedIngredients.contains(weightedIngredient)) {
-            if (weigth >= weightedIngredient.getWeigthFridge()) {
+            if (weigth >= weightedIngredient.getWeightFridge()) {
                 this.weightedIngredients.remove(weightedIngredient);
                 System.out.println(weightedIngredient.getName() + " is removed\n-------------------------");
             } else {
-                weightedIngredient.setWeigthFridge(weightedIngredient.getWeigthFridge() - weigth);
+                weightedIngredient.setWeightFridge(weightedIngredient.getWeightFridge() - weigth);
             }
         } else {
             System.out.println("Alredy doesnt exist in fridge");
         }
     }
+
     public void removeFromFridge(){
         Scanner sc = new Scanner(System.in);
         int count = 0;
@@ -83,7 +84,6 @@ public class Fridge {
         }
     }
 
-    //
     public boolean canMakeMeal(Recipe recipe) {
         boolean flag = false;
             int countIngrediants = 0;
@@ -91,7 +91,7 @@ public class Fridge {
             for (WeightedIngredient elRecipe : recipe.weightedIngredients) {
                 for (WeightedIngredient elFridge : this.weightedIngredients) {
                     if (elRecipe.getName().equals(elFridge.getName())) {
-                        if (elRecipe.getWeightRecipe() > elFridge.getWeigthFridge()) {
+                        if (elRecipe.getWeightRecipe() > elFridge.getWeightFridge()) {
                             checkWeigth++;
                         }
                         countIngrediants++;
@@ -115,18 +115,6 @@ public class Fridge {
             System.out.println("Cant make this meal");
         }
     }
-
-//    public void printIngrediantsFridge() {
-//        if (this.weightedIngredients.isEmpty()) {
-//            System.out.println("Fridge is empty");
-//        } else {
-//            int count = 0;
-//            for (var el : this.weightedIngredients) {
-//                count++;
-//                System.out.println(count + ". " + el.getName());
-//            }
-//        }
-//    }
 
     @Override
     public String toString() {

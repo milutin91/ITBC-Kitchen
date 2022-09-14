@@ -2,25 +2,15 @@ import java.util.*;
 
 public class Recipe implements Priceable {
     private final String name;
-    public final ArrayList<WeightedIngredient> weightedIngredients;
+    public final ArrayList<WeightedIngredient> weightedIngredients = new ArrayList<>();
     private final Level level;
 
-
-
-    public Recipe(String name, ArrayList<WeightedIngredient> weightedIngredients, Level level) {
+    public Recipe(String name, Level level) {
 
         this.name = name;
-        this.weightedIngredients = weightedIngredients;
         this.level = level;
         Database.dbAllRecipes.add(this);
     }
-//    public Recipe(Recipe recipe) {
-//
-//        this.name = recipe.getName();
-//        this.weightedIngredients = recipe.getWeightedIngredients();
-//        this.level = recipe.getLevel();
-//    }
-
 
     public String getName() {
         return name;
@@ -30,33 +20,30 @@ public class Recipe implements Priceable {
         return level;
     }
 
-    public ArrayList<WeightedIngredient> getWeightedIngredients() {
-        return weightedIngredients;
-    }
-
-    public void addIngrediantToRecipe(WeightedIngredient weightedIngredient, double weigth){
+    //TODO Solve problem with changing recipe weight!
+    public void addIngrediantToRecipe(WeightedIngredient weightedIngredient, double weight){
         if(this.weightedIngredients.contains(weightedIngredient)){
             for (var el: this.weightedIngredients){
                 if(el.getName().equals(weightedIngredient.getName())){
-                    el.setWeightRecipe(el.getWeightRecipe() + weigth);
+                    el.setWeightRecipe(el.getWeightRecipe() + weight);
                 }
             }
         }else{
             this.weightedIngredients.add(weightedIngredient);
-            weightedIngredient.setWeightRecipe(weigth);
+            weightedIngredient.setWeightRecipe(weight);
         }
     }
 
-    public void removeIngrediantFromRecipe(WeightedIngredient weightedIngredient) {
-        this.weightedIngredients.remove(weightedIngredient);
-    }
-
-    public Recipe getScaledRecipe(double percent) {
-        new Recipe(this.name, this.weightedIngredients, this.level);
+    public Recipe createScaledRecipe(double percent) {
         for (WeightedIngredient el : this.weightedIngredients) {
-            el.setWeightRecipe(percent / 100 * el.getWeightRecipe());
+            el.setWeightRecipe(Math.round((percent / 100 * el.getWeightRecipe()) * 100) / 100.0);
         }
-        return new Recipe(this.name, this.weightedIngredients, this.level);
+        if(Database.scaledRecipes.contains(this)){
+            System.out.println("Alredy exist!");
+        }else{
+            Database.scaledRecipes.add(this);
+        }
+        return new Recipe(this.name, this.level);
     }
 
     @Override
@@ -66,7 +53,6 @@ public class Recipe implements Priceable {
             sum += el.getPrice();
         }
         return Math.round(sum * 100) / 100.0;
-//        return sum;
     }
 
     @Override

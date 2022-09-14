@@ -1,3 +1,4 @@
+import java.nio.Buffer;
 import java.util.*;
 
 public class Application {
@@ -6,36 +7,34 @@ public class Application {
         Fridge fridge = new Fridge(new LinkedList<>());
         Database database = new Database();
 
-        WeightedIngredient flour = new WeightedIngredient("Flour", 1000, 0.25);
-        WeightedIngredient sugar = new WeightedIngredient("Sugar", 1000, 0.103);
-        WeightedIngredient salt = new WeightedIngredient("Salt", 1000, 0.055);
-        WeightedIngredient yogurt = new WeightedIngredient("Yogurt", 1000, 0.11);
-        WeightedIngredient eggs = new WeightedIngredient("Eggs", 20, 18);
-        WeightedIngredient bakingPowder = new WeightedIngredient("Baking powder", 12, 1.9);
-        WeightedIngredient oil = new WeightedIngredient("Oil", 1000, 0.198);
-        WeightedIngredient cheese = new WeightedIngredient("Cheese", 1000, 0.599);
-        WeightedIngredient ham = new WeightedIngredient("Ham", 1000, 0.699);
-        WeightedIngredient milk = new WeightedIngredient("Milk", 1000, 0.12);
-        WeightedIngredient jam = new WeightedIngredient("Jam", 1000, 0.399);
-        WeightedIngredient chocolate = new WeightedIngredient("Chocolate", 1000, 1.79);
-        WeightedIngredient margarine = new WeightedIngredient("Margarine", 1000, 0.4);
-        WeightedIngredient plasmaBiscuit = new WeightedIngredient("Plasma biscuit", 1000, 0.9);
-        WeightedIngredient creamCheese = new WeightedIngredient("Cream cheese", 1000, 0.75);
-        WeightedIngredient cream = new WeightedIngredient("Cream", 1000, 0.5);
-        WeightedIngredient raspberries = new WeightedIngredient("Rraspberries", 1000, 1);
-
+        WeightedIngredient flour = new WeightedIngredient("Flour", 0.25);
+        WeightedIngredient sugar = new WeightedIngredient("Sugar", 0.103);
+        WeightedIngredient salt = new WeightedIngredient("Salt", 0.055);
+        WeightedIngredient yogurt = new WeightedIngredient("Yogurt", 0.11);
+        WeightedIngredient eggs = new WeightedIngredient("Eggs", 18);
+        WeightedIngredient bakingPowder = new WeightedIngredient("Baking powder", 1.9);
+        WeightedIngredient oil = new WeightedIngredient("Oil", 0.198);
+        WeightedIngredient cheese = new WeightedIngredient("Cheese", 0.599);
+        WeightedIngredient ham = new WeightedIngredient("Ham", 0.699);
+        WeightedIngredient milk = new WeightedIngredient("Milk", 0.12);
+        WeightedIngredient jam = new WeightedIngredient("Jam", 0.399);
+        WeightedIngredient chocolate = new WeightedIngredient("Chocolate", 1.79);
+        WeightedIngredient margarine = new WeightedIngredient("Margarine", 0.4);
+        WeightedIngredient plasmaBiscuit = new WeightedIngredient("Plasma biscuit", 0.9);
+        WeightedIngredient creamCheese = new WeightedIngredient("Cream cheese", 0.75);
+        WeightedIngredient cream = new WeightedIngredient("Cream", 0.5);
+        WeightedIngredient raspberries = new WeightedIngredient("Rraspberries", 1);
 
 //        1.
-        Recipe spanishPita = new Recipe("SPANISH PITA", new ArrayList<>(), Level.MEDIUM);
+        Recipe spanishPita = new Recipe("SPANISH PITA", Level.MEDIUM);
         spanishPita.addIngrediantToRecipe(flour, 100);
         spanishPita.addIngrediantToRecipe(oil, 40);
         spanishPita.addIngrediantToRecipe(yogurt, 40);
         spanishPita.addIngrediantToRecipe(eggs, 4);
         spanishPita.addIngrediantToRecipe(bakingPowder, 6);
 
-
 //        2.
-        Recipe fastPiroshka = new Recipe("FAST PIROSHKA", new ArrayList<>(), Level.BEGINNER);
+        Recipe fastPiroshka = new Recipe("FAST PIROSHKA", Level.BEGINNER);
         fastPiroshka.addIngrediantToRecipe(flour, 400);
         fastPiroshka.addIngrediantToRecipe(bakingPowder, 6);
         fastPiroshka.addIngrediantToRecipe(salt, 2);
@@ -45,7 +44,7 @@ public class Application {
         fastPiroshka.addIngrediantToRecipe(ham, 125);
 
 //        3.
-        Recipe muffin = new Recipe("MUFFIN", new ArrayList<>(), Level.EASY);
+        Recipe muffin = new Recipe("MUFFIN", Level.EASY);
         muffin.addIngrediantToRecipe(milk, 250);
         muffin.addIngrediantToRecipe(sugar, 30);
         muffin.addIngrediantToRecipe(salt, 10);
@@ -53,7 +52,7 @@ public class Application {
         muffin.addIngrediantToRecipe(flour, 1000);
 
 //        4.
-        Recipe honeyHeart = new Recipe("HONEY HEART", new ArrayList<>(), Level.HARD);
+        Recipe honeyHeart = new Recipe("HONEY HEART", Level.HARD);
         honeyHeart.addIngrediantToRecipe(sugar, 200);
         honeyHeart.addIngrediantToRecipe(flour, 400);
         honeyHeart.addIngrediantToRecipe(milk, 200);
@@ -61,14 +60,14 @@ public class Application {
         honeyHeart.addIngrediantToRecipe(oil, 20);
 
 //        5.
-        Recipe souffle = new Recipe("SOUFFLE", new ArrayList<>(), Level.PRO);
+        Recipe souffle = new Recipe("SOUFFLE", Level.PRO);
         souffle.addIngrediantToRecipe(sugar, 190);
         souffle.addIngrediantToRecipe(flour, 300);
         souffle.addIngrediantToRecipe(chocolate, 200);
         souffle.addIngrediantToRecipe(margarine, 250);
 
 //        6.
-        Recipe cheeesecake = new Recipe("CHEESECAKE", new ArrayList<>(), Level.HARD);
+        Recipe cheeesecake = new Recipe("CHEESECAKE", Level.HARD);
         cheeesecake.addIngrediantToRecipe(plasmaBiscuit, 300);
         cheeesecake.addIngrediantToRecipe(margarine, 150);
         cheeesecake.addIngrediantToRecipe(creamCheese, 400);
@@ -78,13 +77,13 @@ public class Application {
         cheeesecake.addIngrediantToRecipe(raspberries, 400);
 
 //        7.
-        Recipe scrambledEggs = new Recipe("SCRAMBLED EGGS", new ArrayList<>(), Level.EASY);
+        Recipe scrambledEggs = new Recipe("SCRAMBLED EGGS", Level.EASY);
         scrambledEggs.addIngrediantToRecipe(eggs, 4);
         scrambledEggs.addIngrediantToRecipe(oil, 10);
         scrambledEggs.addIngrediantToRecipe(salt, 1);
 
 //        8.
-        Recipe sconesWithCheese = new Recipe("SCONES WITH CHEESE", new ArrayList<>(), Level.HARD);
+        Recipe sconesWithCheese = new Recipe("SCONES WITH CHEESE", Level.HARD);
         sconesWithCheese.addIngrediantToRecipe(milk, 200);
         sconesWithCheese.addIngrediantToRecipe(sugar, 10);
         sconesWithCheese.addIngrediantToRecipe(flour, 300);
@@ -92,14 +91,14 @@ public class Application {
         sconesWithCheese.addIngrediantToRecipe(eggs, 1);
 
 //        9.
-        Recipe pizzaDough = new Recipe("PIZZA DOUGH", new ArrayList<>(), Level.PRO);
+        Recipe pizzaDough = new Recipe("PIZZA DOUGH", Level.PRO);
         pizzaDough.addIngrediantToRecipe(flour, 300);
         pizzaDough.addIngrediantToRecipe(oil, 15);
         pizzaDough.addIngrediantToRecipe(salt, 8);
         pizzaDough.addIngrediantToRecipe(sugar, 8);
 
 //        10.
-        Recipe friedEggsWithHam = new Recipe("FRIED EGGS WITH HAM", new ArrayList<>(), Level.MEDIUM);
+        Recipe friedEggsWithHam = new Recipe("FRIED EGGS WITH HAM", Level.MEDIUM);
         friedEggsWithHam.addIngrediantToRecipe(eggs, 3);
         friedEggsWithHam.addIngrediantToRecipe(oil, 10);
         friedEggsWithHam.addIngrediantToRecipe(salt, 5);
@@ -120,6 +119,11 @@ public class Application {
                         5. Favourite recipes
                         0. Leave kitchen
                     --------------------------""");
+
+            while(!sc.hasNextInt()){
+                System.out.println("Input is not valid! Enter number!");
+                sc.nextLine();
+            }
             choice = sc.nextInt();
             switch (choice) {
                 case 0:
@@ -138,6 +142,10 @@ public class Application {
                                     2. Take ingrediant
                                     0. Go back
                                 --------------------------""");
+                        while(!sc.hasNextInt()){
+                            System.out.println("Input is not valid! Enter number!");
+                            sc.nextLine();
+                        }
                         choice = sc.nextInt();
                         switch (choice) {
                             case 0:
@@ -156,7 +164,7 @@ public class Application {
                         System.out.println(fridge);
                     }
                     break;
-                case 2:
+                case 2:  //TODO Finish this case when changing weight problem is solved!
                     boolean flag3 = true;
                     while (flag3) {
                         System.out.println("""
@@ -167,6 +175,10 @@ public class Application {
                                     3. Make meal
                                     0. Go back
                                 ---------------------------------------------------""");
+                        while(!sc.hasNextInt()){
+                            System.out.println("Input is not valid! Enter number!");
+                            sc.nextLine();
+                        }
                         choice = sc.nextInt();
                         switch (choice) {
                             case 0:
@@ -210,6 +222,10 @@ public class Application {
                                     }
                                 }
                                 count = 0;
+                                while(!sc.hasNextInt()){
+                                    System.out.println("Input is not valid! Enter number!");
+                                    sc.nextLine();
+                                }
                                 choice = sc.nextInt();
                                 for (var el : Database.dbAllRecipes) {
                                     if (fridge.canMakeMeal(el)) {
@@ -237,6 +253,10 @@ public class Application {
                                     3. Combo of 1 and 2
                                     0. Go back
                                 -------------------------------------------------""");
+                        while(!sc.hasNextInt()){
+                            System.out.println("Input is not valid! Enter number!");
+                            sc.nextLine();
+                        }
                         choice = sc.nextInt();
                         switch (choice) {
                             case 0:
@@ -251,6 +271,10 @@ public class Application {
                                                 1. Filter by money
                                                 0. Go back
                                             -------------------------""");
+                                    while(!sc.hasNextInt()){
+                                        System.out.println("Input is not valid! Enter number!");
+                                        sc.nextLine();
+                                    }
                                     choice = sc.nextInt();
                                     switch (choice) {
                                         case 0:
@@ -280,6 +304,10 @@ public class Application {
                                                 5. Pro
                                                 0. Go back
                                             ---------------------""");
+                                    while(!sc.hasNextInt()){
+                                        System.out.println("Input is not valid! Enter number!");
+                                        sc.nextLine();
+                                    }
                                     choice = sc.nextInt();
                                     switch (choice) {
                                         case 0:
@@ -319,6 +347,10 @@ public class Application {
                                                 5. Pro
                                                 0. Go back
                                             ---------------------""");
+                                    while(!sc.hasNextInt()){
+                                        System.out.println("Input is not valid! Enter number!");
+                                        sc.nextLine();
+                                    }
                                     choice = sc.nextInt();
                                     switch (choice) {
                                         case 0:
@@ -368,6 +400,10 @@ public class Application {
                                     2. Sort recipe by price
                                     0. Go back
                                 -------------------------------""");
+                        while(!sc.hasNextInt()){
+                            System.out.println("Input is not valid! Enter number!");
+                            sc.nextLine();
+                        }
                         choice = sc.nextInt();
                         switch (choice) {
                             case 0:
@@ -383,6 +419,10 @@ public class Application {
                                                 2. Sort level PRO --> EASY
                                                 0. Go back
                                             -----------------------------------""");
+                                    while(!sc.hasNextInt()){
+                                        System.out.println("Input is not valid! Enter number!");
+                                        sc.nextLine();
+                                    }
                                     choice = sc.nextInt();
                                     switch (choice) {
                                         case 0:
@@ -410,6 +450,10 @@ public class Application {
                                                 2. Sort price HIGH --> LOW
                                                 0. Go back
                                             ----------------------------------""");
+                                    while(!sc.hasNextInt()){
+                                        System.out.println("Input is not valid! Enter number!");
+                                        sc.nextLine();
+                                    }
                                     choice = sc.nextInt();
                                     switch (choice) {
                                         case 0:
@@ -436,7 +480,7 @@ public class Application {
                 case 5:
                     boolean flag11 = true;
                     while (flag11) {
-                        if (Database.favouriteRecipes.isEmpty()){
+                        if (Database.favouriteRecipes.isEmpty()) {
                             System.out.println("You don't have favourites!\n");
                         } else {
                             System.out.println("Your favourites:");
@@ -456,6 +500,10 @@ public class Application {
                                     3. Favourite recipes for specified money
                                     0. Go back
                                 ------------------------------------------------""");
+                        while(!sc.hasNextInt()){
+                            System.out.println("Input is not valid! Enter number!");
+                            sc.nextLine();
+                        }
                         choice = sc.nextInt();
                         switch (choice) {
                             case 0:
@@ -468,8 +516,8 @@ public class Application {
                                 database.removeFavourites();
                                 break;
                             case 3:
-                                if (Database.favouriteRecipes.isEmpty()){
-                                }else{
+                                if (Database.favouriteRecipes.isEmpty()) {
+                                } else {
                                     System.out.println("How much money do u have?");
                                     double money = sc.nextDouble();
                                     database.filterFavouriteMoney(money);
@@ -480,6 +528,9 @@ public class Application {
                                 break;
                         }
                     }
+                    break;
+                default:
+                    System.out.println("Choose again!");
                     break;
             }
         }
