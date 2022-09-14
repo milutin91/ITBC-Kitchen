@@ -33,7 +33,7 @@ public class WeightedIngredient extends Ingredient implements Priceable {
 
     @Override
     public double getPrice() {
-        return weightRecipe * (this.pricePerUnit / 1000);
+        return Math.round((weightRecipe * this.pricePerUnit) * 100) / 100.0;
     }
 
     @Override

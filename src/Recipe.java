@@ -65,7 +65,8 @@ public class Recipe implements Priceable {
         for (WeightedIngredient el : this.weightedIngredients){
             sum += el.getPrice();
         }
-        return sum;
+        return Math.round(sum * 100) / 100.0;
+//        return sum;
     }
 
     @Override

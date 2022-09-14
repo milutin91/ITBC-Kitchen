@@ -6,23 +6,23 @@ public class Application {
         Fridge fridge = new Fridge(new LinkedList<>());
         Database database = new Database();
 
-        WeightedIngredient flour = new WeightedIngredient("Flour", 1000, 85);
-        WeightedIngredient sugar = new WeightedIngredient("Sugar", 1000, 103);
-        WeightedIngredient salt = new WeightedIngredient("Salt", 1000, 70);
-        WeightedIngredient yogurt = new WeightedIngredient("Yogurt", 1000, 150);
-        WeightedIngredient eggs = new WeightedIngredient("Eggs", 20, 18000);
-        WeightedIngredient bakingPowder = new WeightedIngredient("Baking powder", 12, 2083.33);
-        WeightedIngredient oil = new WeightedIngredient("Oil", 1000, 200);
-        WeightedIngredient cheese = new WeightedIngredient("Cheese", 1000, 600);
-        WeightedIngredient ham = new WeightedIngredient("Ham", 1000, 700);
-        WeightedIngredient milk = new WeightedIngredient("Milk", 1000, 120);
-        WeightedIngredient jam = new WeightedIngredient("Jam", 1000, 400);
-        WeightedIngredient chocolate = new WeightedIngredient("Chocolate", 1000, 1600);
-        WeightedIngredient margarine = new WeightedIngredient("Margarine", 1000, 400);
-        WeightedIngredient plasmaBiscuit = new WeightedIngredient("Plasma biscuit", 1000, 900);
-        WeightedIngredient creamCheese = new WeightedIngredient("Cream cheese", 1000, 750);
-        WeightedIngredient cream = new WeightedIngredient("Cream", 1000, 500);
-        WeightedIngredient raspberries = new WeightedIngredient("Rraspberries", 1000, 1000);
+        WeightedIngredient flour = new WeightedIngredient("Flour", 1000, 0.25);
+        WeightedIngredient sugar = new WeightedIngredient("Sugar", 1000, 0.103);
+        WeightedIngredient salt = new WeightedIngredient("Salt", 1000, 0.055);
+        WeightedIngredient yogurt = new WeightedIngredient("Yogurt", 1000, 0.11);
+        WeightedIngredient eggs = new WeightedIngredient("Eggs", 20, 18);
+        WeightedIngredient bakingPowder = new WeightedIngredient("Baking powder", 12, 1.9);
+        WeightedIngredient oil = new WeightedIngredient("Oil", 1000, 0.198);
+        WeightedIngredient cheese = new WeightedIngredient("Cheese", 1000, 0.599);
+        WeightedIngredient ham = new WeightedIngredient("Ham", 1000, 0.699);
+        WeightedIngredient milk = new WeightedIngredient("Milk", 1000, 0.12);
+        WeightedIngredient jam = new WeightedIngredient("Jam", 1000, 0.399);
+        WeightedIngredient chocolate = new WeightedIngredient("Chocolate", 1000, 1.79);
+        WeightedIngredient margarine = new WeightedIngredient("Margarine", 1000, 0.4);
+        WeightedIngredient plasmaBiscuit = new WeightedIngredient("Plasma biscuit", 1000, 0.9);
+        WeightedIngredient creamCheese = new WeightedIngredient("Cream cheese", 1000, 0.75);
+        WeightedIngredient cream = new WeightedIngredient("Cream", 1000, 0.5);
+        WeightedIngredient raspberries = new WeightedIngredient("Rraspberries", 1000, 1);
 
 
 //        1.
@@ -107,21 +107,23 @@ public class Application {
 
         int choice;
 
-        System.out.println("---Welcome to kitchen---\n");
+        System.out.println("       --------------------\n~~~~~~| WELCOME TO KITCHEN |~~~~~~\n       --------------------\n");
         boolean flag = true;
         while (flag) {
             System.out.println("""
                     Please press:\s
-                    1. Open Fridge
-                    2. Make a meal
-                    3. Filter recipes
-                    4. Sorting recipes
-                    5. Favourite recipes
-                    0. Leave kitchen""");
+                    --------------------------
+                        1. Open Fridge
+                        2. Make a meal
+                        3. Filter recipes
+                        4. Sorting recipes
+                        5. Favourite recipes
+                        0. Leave kitchen
+                    --------------------------""");
             choice = sc.nextInt();
             switch (choice) {
                 case 0:
-                    System.out.println("Goodbye");
+                    System.out.println("GOODBYE!");
                     flag = false;
                     break;
                 case 1:
@@ -131,9 +133,11 @@ public class Application {
                     while (flag2) {
                         System.out.println("""
                                 Choose what to do:\s
-                                1. Add ingrediant
-                                2. Take ingrediant
-                                0. Go back""");
+                                --------------------------
+                                    1. Add ingrediant
+                                    2. Take ingrediant
+                                    0. Go back
+                                --------------------------""");
                         choice = sc.nextInt();
                         switch (choice) {
                             case 0:
@@ -157,10 +161,12 @@ public class Application {
                     while (flag3) {
                         System.out.println("""
                                 Choose what to do:\s
-                                1. Which recipes do you have ingrediants for
-                                2. Which scaled recipes do you have ingrediants for
-                                3. Make meal
-                                0. Go back""");
+                                ---------------------------------------------------
+                                    1. Which recipes do you have ingrediants for
+                                    2. Which scaled recipes do you have ingrediants for
+                                    3. Make meal
+                                    0. Go back
+                                ---------------------------------------------------""");
                         choice = sc.nextInt();
                         switch (choice) {
                             case 0:
@@ -225,10 +231,12 @@ public class Application {
                     while (flag4) {
                         System.out.println("""
                                 Choose what to do:\s
-                                1. Check all recipes for specified money
-                                2. Check all recipes with specified level
-                                3. Combo of 1 and 2
-                                0. Go back""");
+                                ------------------------------------------------
+                                    1. Check all recipes for specified money
+                                    2. Check all recipes with specified level
+                                    3. Combo of 1 and 2
+                                    0. Go back
+                                -------------------------------------------------""");
                         choice = sc.nextInt();
                         switch (choice) {
                             case 0:
@@ -239,15 +247,16 @@ public class Application {
                                 while (flag5) {
                                     System.out.println("""
                                             Filter by money:\s
-                                            1. Filter by money
-                                            0. Go back""");
+                                            -------------------------
+                                                1. Filter by money
+                                                0. Go back
+                                            -------------------------""");
                                     choice = sc.nextInt();
                                     switch (choice) {
                                         case 0:
                                             flag5 = false;
                                             break;
                                         case 1:
-                                            System.out.println("Filter by money: ");
                                             System.out.println("How much money do you have?");
                                             double money = sc.nextDouble();
                                             database.filterMoney(money);
@@ -263,12 +272,14 @@ public class Application {
                                 while (flag6) {
                                     System.out.println("""
                                             Filter by level:\s
-                                            1. Begginer
-                                            2. Easy
-                                            3. Medium
-                                            4. Hard
-                                            5. Pro
-                                            0. Go back""");
+                                            ---------------------
+                                                1. Begginer
+                                                2. Easy
+                                                3. Medium
+                                                4. Hard
+                                                5. Pro
+                                                0. Go back
+                                            ---------------------""");
                                     choice = sc.nextInt();
                                     switch (choice) {
                                         case 0:
@@ -300,12 +311,14 @@ public class Application {
                                 while (flag7) {
                                     System.out.println("""
                                             Filter by level and money:\s
-                                            1. Begginer
-                                            2. Easy
-                                            3. Medium
-                                            4. Hard
-                                            5. Pro
-                                            0. Go back""");
+                                            ---------------------
+                                                1. Begginer
+                                                2. Easy
+                                                3. Medium
+                                                4. Hard
+                                                5. Pro
+                                                0. Go back
+                                            ---------------------""");
                                     choice = sc.nextInt();
                                     switch (choice) {
                                         case 0:
@@ -350,9 +363,11 @@ public class Application {
                     while (flag8) {
                         System.out.println("""
                                 Choose what to do:\s
-                                1. Sort recipe by level
-                                2. Sort recipe by price
-                                0. Go back""");
+                                -------------------------------
+                                    1. Sort recipe by level
+                                    2. Sort recipe by price
+                                    0. Go back
+                                -------------------------------""");
                         choice = sc.nextInt();
                         switch (choice) {
                             case 0:
@@ -363,9 +378,11 @@ public class Application {
                                 while (flag9) {
                                     System.out.println("""
                                             Choose what to do:\s
-                                            1. Sort level EASY --> PRO
-                                            2. Sort level PRO --> EASY
-                                            0. Go back""");
+                                            -----------------------------------
+                                                1. Sort level EASY --> PRO
+                                                2. Sort level PRO --> EASY
+                                                0. Go back
+                                            -----------------------------------""");
                                     choice = sc.nextInt();
                                     switch (choice) {
                                         case 0:
@@ -388,19 +405,21 @@ public class Application {
                                 while (flag10) {
                                     System.out.println("""
                                             Choose what to do:\s
-                                            1. Sort price LOW --> HIGH
-                                            2. Sort price HIGH --> LOW
-                                            0. Go back""");
+                                            ----------------------------------
+                                                1. Sort price LOW --> HIGH
+                                                2. Sort price HIGH --> LOW
+                                                0. Go back
+                                            ----------------------------------""");
                                     choice = sc.nextInt();
                                     switch (choice) {
                                         case 0:
                                             flag10 = false;
                                             break;
                                         case 1:
-                                            database.sortRecipesMoneyIncrease();
+                                            database.sortRecipesPriceIncrease();
                                             break;
                                         case 2:
-                                            database.sortRecipesMoneyDecrease();
+                                            database.sortRecipesPriceDecrease();
                                             break;
                                         default:
                                             System.out.println("Choose again!");
@@ -418,22 +437,25 @@ public class Application {
                     boolean flag11 = true;
                     while (flag11) {
                         if (Database.favouriteRecipes.isEmpty()){
-                            System.out.println("You don't have favourites!");
+                            System.out.println("You don't have favourites!\n");
                         } else {
                             System.out.println("Your favourites:");
+                            int count = 0;
+                            System.out.println("--------------------------------------");
+                            for (var el : Database.favouriteRecipes) {
+                                count++;
+                                System.out.println(count + ". " + el.getName());
+                            }
+                            System.out.println("--------------------------------------\n");
                         }
-                        int count = 0;
-                        for (var el : Database.favouriteRecipes) {
-                            count++;
-                            System.out.println(count + ". " + el.getName());
-                        }
-                        System.out.println();
                         System.out.println("""
                                 Choose what to do:\s
-                                1. Add to favourites
-                                2. Remove from favourites
-                                3. Favourite recipes for specified money
-                                0. Go back""");
+                                ------------------------------------------------
+                                    1. Add to favourites
+                                    2. Remove from favourites
+                                    3. Favourite recipes for specified money
+                                    0. Go back
+                                ------------------------------------------------""");
                         choice = sc.nextInt();
                         switch (choice) {
                             case 0:
@@ -450,7 +472,6 @@ public class Application {
                                 }else{
                                     System.out.println("How much money do u have?");
                                     double money = sc.nextDouble();
-
                                     database.filterFavouriteMoney(money);
                                 }
                                 break;

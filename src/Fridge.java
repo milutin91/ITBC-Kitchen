@@ -33,24 +33,27 @@ public class Fridge {
     public void addToFridge() {
         Scanner sc = new Scanner(System.in);
         int count = 0;
+        System.out.println("---------------------");
         for (var el : Database.dbAllIngrediants) {
             count++;
             System.out.println(count + ". " + el.getName());
         }
+        System.out.println("---------------------");
         int choice = sc.nextInt();
         for (var el : Database.dbAllIngrediants) {
             if (choice == el.getId()) {
-                System.out.println("Weight?");
+                System.out.println("Weight?\n-------");
                 addToFridge(el, sc.nextInt());
             }
         }
+
     }
 
     public void removeFromFridge(WeightedIngredient weightedIngredient, double weigth) {
         if (this.weightedIngredients.contains(weightedIngredient)) {
-            if (weigth > weightedIngredient.getWeigthFridge()) {
+            if (weigth >= weightedIngredient.getWeigthFridge()) {
                 this.weightedIngredients.remove(weightedIngredient);
-                System.out.println("Ingrediant " + weightedIngredient.getName() + " removed");
+                System.out.println(weightedIngredient.getName() + " is removed\n-------------------------");
             } else {
                 weightedIngredient.setWeigthFridge(weightedIngredient.getWeigthFridge() - weigth);
             }
@@ -61,12 +64,14 @@ public class Fridge {
     public void removeFromFridge(){
         Scanner sc = new Scanner(System.in);
         int count = 0;
+        System.out.println("---------------------");
+
         for (var el : this.weightedIngredients) {
             count++;
             System.out.println(count + ". " + el.getName());
         }
+        System.out.println("---------------------");
         int choice = sc.nextInt();
-
         count = 0;
         for (int i = 0; i < weightedIngredients.size(); i++) {
             count++;
@@ -126,10 +131,10 @@ public class Fridge {
     @Override
     public String toString() {
         if (this.weightedIngredients.isEmpty()) {
-            return "Fridge is empty";
+            return "Fridge is empty!\n----------------";
 
         } else {
-            return "Fridge ingrediants\n" + this.weightedIngredients + "\n";
+            return "Fridge ingrediants:\n-------------------\n" + this.weightedIngredients + "\n";
         }
     }
 }

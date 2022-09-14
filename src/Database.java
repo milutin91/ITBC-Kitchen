@@ -62,17 +62,22 @@ public class Database {
             System.out.println("You can't make anythig");
         }else{
             System.out.println("You can make: ");
+            System.out.println("--------------------------------------");
             for (var el: filterSortRecipes){
                 System.out.println(el.getName() + "-->" + el.getPrice());
             }
+            System.out.println("--------------------------------------\n");
         }
     }
     public void filterLevel(Level level){
         filterSortRecipes = Database.dbAllRecipes.stream()
                 .filter(recipe -> recipe.getLevel().equals(level)).toList();
+        System.out.println("--------------------------------------");
         for (var el: filterSortRecipes){
             System.out.println(el.getName() + "-->" + el.getLevel());
         }
+        System.out.println("--------------------------------------\n");
+
     }
     public void filterMoneyLevel(double money, Level level){
         filterSortRecipes = Database.dbAllRecipes.stream()
@@ -88,52 +93,62 @@ public class Database {
             System.out.println("You can't make anything!");
         }else{
             System.out.println("You can make " + level.toString() + ": ");
+            System.out.println("--------------------------------------");
             for (var el: filterSortRecipes){
                 System.out.println(el.getName() + "-->" + el.getLevel() + "-->" + el.getPrice());
             }
+            System.out.println("--------------------------------------\n");
         }
     }
     public void sortRecipesLevelIncrease(){
         filterSortRecipes = Database.dbAllRecipes.stream()
                 .sorted(Comparator.comparing(Recipe::getLevel))
                 .collect(Collectors.toList());
+        System.out.println("--------------------------------------");
         for (var el: filterSortRecipes){
             System.out.println(el.getName() + "-->" + el.getLevel());
         }
-        System.out.println();
+        System.out.println("--------------------------------------\n");
     }
     public void sortRecipesLevelDecrease(){
         filterSortRecipes = Database.dbAllRecipes.stream()
                 .sorted(Comparator.comparing(Recipe::getLevel).reversed())
                 .collect(Collectors.toList());
+        System.out.println("--------------------------------------");
         for (var el: filterSortRecipes){
             System.out.println(el.getName() + "-->" + el.getLevel());
         }
-        System.out.println();
+        System.out.println("--------------------------------------\n");
     }
-    public void sortRecipesMoneyIncrease(){
+    public void sortRecipesPriceIncrease(){
         filterSortRecipes = Database.dbAllRecipes.stream()
                 .sorted(Comparator.comparing(Recipe::getPrice))
                 .collect(Collectors.toList());
+        System.out.println("--------------------------------------");
         for (var el: filterSortRecipes){
             System.out.println(el.getName() + "-->" + el.getPrice());
         }
+        System.out.println("--------------------------------------\n");
     }
-    public void sortRecipesMoneyDecrease(){
+    public void sortRecipesPriceDecrease(){
         filterSortRecipes = Database.dbAllRecipes.stream()
                 .sorted(Comparator.comparing(Recipe::getPrice).reversed())
                 .collect(Collectors.toList());
+        System.out.println("--------------------------------------");
         for (var el: filterSortRecipes){
             System.out.println(el.getName() + "-->" + el.getPrice());
         }
+        System.out.println("--------------------------------------\n");
     }
     public void addFavourites(){
         Scanner sc = new Scanner(System.in);
         int count = 0;
+        System.out.println("--------------------------------------");
         for (var el : dbAllRecipes) {
             count++;
             System.out.println(count + ". " + el.getName());
         }
+        System.out.println("--------------------------------------\n");
         count = 0;
         int choice = sc.nextInt();
         for (var el : dbAllRecipes) {
@@ -150,9 +165,15 @@ public class Database {
     public void removeFavourites(){
         Scanner sc = new Scanner(System.in);
         int count = 0;
-        for (Recipe favouriteRecipe : favouriteRecipes) {
-            count++;
-            System.out.println(count + ". " + favouriteRecipe.getName());
+        if(favouriteRecipes.isEmpty()){
+            System.out.println("You don't have favourites!");
+        }else{
+            System.out.println("--------------------------------------");
+            for (Recipe favouriteRecipe : favouriteRecipes) {
+                count++;
+                System.out.println(count + ". " + favouriteRecipe.getName());
+            }
+            System.out.println("--------------------------------------\n");
         }
         count = 0;
         int choice = sc.nextInt();
@@ -174,12 +195,13 @@ public class Database {
             System.out.println("You can't make anything, you are broke!\n");
         }else{
             System.out.println("You can make:");
+            System.out.println("--------------------------------------");
             for (var el : favouriteRecipes) {
                 if (money > el.getPrice()) {
                     System.out.println(el.getName());
                 }
             }
-            System.out.println();
+            System.out.println("--------------------------------------\n");
         }
     }
 
