@@ -120,7 +120,7 @@ public class Application {
                         0. Leave kitchen
                     --------------------------""");
 
-            while(!sc.hasNextInt()){
+            while(!sc.hasNextInt()){  //TODO Find better solution!
                 System.out.println("Input is not valid! Enter number!");
                 sc.nextLine();
             }
