@@ -1,15 +1,19 @@
 import java.util.*;
 
 public class Recipe implements Priceable {
+    private static int count = 1;
+    private final int id;
     private final String name;
-    public final ArrayList<WeightedIngredient> weightedIngredients = new ArrayList<>();
+    public ArrayList<WeightedIngredient> weightedIngredients;
     private final Level level;
 
     public Recipe(String name, Level level) {
 
+        this.id = count++;
         this.name = name;
         this.level = level;
-        Database.dbAllRecipes.add(this);
+        Database.dbAllRecipes.put(this.id, this);
+        weightedIngredients = new ArrayList<>();
     }
 
     public String getName() {
@@ -20,7 +24,6 @@ public class Recipe implements Priceable {
         return level;
     }
 
-    //TODO Solve problem with changing recipe weight!
     public void addIngrediantToRecipe(WeightedIngredient weightedIngredient, double weight){
         if(this.weightedIngredients.contains(weightedIngredient)){
             for (var el: this.weightedIngredients){
@@ -34,19 +37,6 @@ public class Recipe implements Priceable {
         }
     }
 
-    //TODO Implement when weight problem is solved!
-    public Recipe createScaledRecipe(double percent) {
-        for (WeightedIngredient el : this.weightedIngredients) {
-            el.setWeightRecipe(Math.round((percent / 100 * el.getWeightRecipe()) * 100) / 100.0);
-        }
-        if(Database.scaledRecipes.contains(this)){
-            System.out.println("Alredy exist!");
-        }else{
-            Database.scaledRecipes.add(this);
-        }
-        return new Recipe(this.name, this.level);
-    }
-
     @Override
     public double getPrice() {
         double sum = 0;
@@ -58,7 +48,12 @@ public class Recipe implements Priceable {
 
     @Override
     public String toString() {
-        return "Recipe name= " + this.name + ", Level= " + this.level + ", Price= " + this.getPrice() +
-                "\nIngredients of " + this.name + ":\n" + this.weightedIngredients;
+        StringBuilder builder = new StringBuilder();
+        for(var el: this.weightedIngredients){
+            builder.append("\t* ").append(el);
+        }
+        String text = builder.toString();
+        return this.name + " - " + this.getPrice() + " RSD\n" +
+                Decoration.returnLine(50) + "\n" + text + Decoration.returnLine(50) + "\n";
     }
 }

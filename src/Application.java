@@ -1,124 +1,127 @@
-import java.nio.Buffer;
 import java.util.*;
 
 public class Application {
+
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         Fridge fridge = new Fridge(new LinkedList<>());
         Database database = new Database();
 
-        WeightedIngredient flour = new WeightedIngredient("Flour", 0.25);
-        WeightedIngredient sugar = new WeightedIngredient("Sugar", 0.103);
-        WeightedIngredient salt = new WeightedIngredient("Salt", 0.055);
-        WeightedIngredient yogurt = new WeightedIngredient("Yogurt", 0.11);
-        WeightedIngredient eggs = new WeightedIngredient("Eggs", 18);
-        WeightedIngredient bakingPowder = new WeightedIngredient("Baking powder", 1.9);
-        WeightedIngredient oil = new WeightedIngredient("Oil", 0.198);
-        WeightedIngredient cheese = new WeightedIngredient("Cheese", 0.599);
-        WeightedIngredient ham = new WeightedIngredient("Ham", 0.699);
-        WeightedIngredient milk = new WeightedIngredient("Milk", 0.12);
-        WeightedIngredient jam = new WeightedIngredient("Jam", 0.399);
-        WeightedIngredient chocolate = new WeightedIngredient("Chocolate", 1.79);
-        WeightedIngredient margarine = new WeightedIngredient("Margarine", 0.4);
-        WeightedIngredient plasmaBiscuit = new WeightedIngredient("Plasma biscuit", 0.9);
-        WeightedIngredient creamCheese = new WeightedIngredient("Cream cheese", 0.75);
-        WeightedIngredient cream = new WeightedIngredient("Cream", 0.5);
-        WeightedIngredient raspberries = new WeightedIngredient("Rraspberries", 1);
+        WeightedIngredient flour = new WeightedIngredient("Flour", 0.25);                   //1
+        WeightedIngredient sugar = new WeightedIngredient("Sugar", 0.103);                  //2
+        WeightedIngredient salt = new WeightedIngredient("Salt", 0.055);                    //3
+        WeightedIngredient yogurt = new WeightedIngredient("Yogurt", 0.11);                 //4
+        WeightedIngredient eggs = new WeightedIngredient("Eggs", 18);                       //5
+        WeightedIngredient bakingPowder = new WeightedIngredient("Baking powder", 1.9);     //6
+        WeightedIngredient oil = new WeightedIngredient("Oil", 0.198);                      //7
+        WeightedIngredient cheese = new WeightedIngredient("Cheese", 0.599);                //8
+        WeightedIngredient ham = new WeightedIngredient("Ham", 0.699);                      //9
+        WeightedIngredient milk = new WeightedIngredient("Milk", 0.12);                     //10
+        WeightedIngredient jam = new WeightedIngredient("Jam", 0.399);                      //11
+        WeightedIngredient chocolate = new WeightedIngredient("Chocolate", 1.79);           //12
+        WeightedIngredient margarine = new WeightedIngredient("Margarine", 0.4);            //13
+        WeightedIngredient plasmaBiscuit = new WeightedIngredient("Plasma biscuit", 0.9);   //14
+        WeightedIngredient creamCheese = new WeightedIngredient("Cream cheese", 0.75);      //15
+        WeightedIngredient cream = new WeightedIngredient("Cream", 0.5);                    //16
+        WeightedIngredient raspberries = new WeightedIngredient("Rraspberries", 1);         //17
 
 //        1.
         Recipe spanishPita = new Recipe("SPANISH PITA", Level.MEDIUM);
-        spanishPita.addIngrediantToRecipe(flour, 100);
-        spanishPita.addIngrediantToRecipe(oil, 40);
-        spanishPita.addIngrediantToRecipe(yogurt, 40);
-        spanishPita.addIngrediantToRecipe(eggs, 4);
-        spanishPita.addIngrediantToRecipe(bakingPowder, 6);
+        spanishPita.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(1).getName(), Database.dbAllIngrediants.get(1).getPricePerUnit()), 100);
+        spanishPita.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(7).getName(), Database.dbAllIngrediants.get(7).getPricePerUnit()), 40);
+        spanishPita.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(4).getName(), Database.dbAllIngrediants.get(4).getPricePerUnit()), 40);
+        spanishPita.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(5).getName(), Database.dbAllIngrediants.get(5).getPricePerUnit()), 4);
+        spanishPita.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(6).getName(), Database.dbAllIngrediants.get(6).getPricePerUnit()), 6);
 
 //        2.
         Recipe fastPiroshka = new Recipe("FAST PIROSHKA", Level.BEGINNER);
-        fastPiroshka.addIngrediantToRecipe(flour, 400);
-        fastPiroshka.addIngrediantToRecipe(bakingPowder, 6);
-        fastPiroshka.addIngrediantToRecipe(salt, 2);
-        fastPiroshka.addIngrediantToRecipe(eggs, 1);
-        fastPiroshka.addIngrediantToRecipe(yogurt, 40);
-        fastPiroshka.addIngrediantToRecipe(cheese, 125);
-        fastPiroshka.addIngrediantToRecipe(ham, 125);
+        fastPiroshka.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(1).getName(), Database.dbAllIngrediants.get(1).getPricePerUnit()), 400);
+        fastPiroshka.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(6).getName(), Database.dbAllIngrediants.get(6).getPricePerUnit()), 6);
+        fastPiroshka.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(3).getName(), Database.dbAllIngrediants.get(3).getPricePerUnit()), 2);
+        fastPiroshka.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(5).getName(), Database.dbAllIngrediants.get(5).getPricePerUnit()), 1);
+        fastPiroshka.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(4).getName(), Database.dbAllIngrediants.get(4).getPricePerUnit()), 40);
+        fastPiroshka.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(8).getName(), Database.dbAllIngrediants.get(8).getPricePerUnit()), 125);
+        fastPiroshka.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(9).getName(), Database.dbAllIngrediants.get(9).getPricePerUnit()), 125);
 
 //        3.
         Recipe muffin = new Recipe("MUFFIN", Level.EASY);
-        muffin.addIngrediantToRecipe(milk, 250);
-        muffin.addIngrediantToRecipe(sugar, 30);
-        muffin.addIngrediantToRecipe(salt, 10);
-        muffin.addIngrediantToRecipe(oil, 50);
-        muffin.addIngrediantToRecipe(flour, 1000);
+        muffin.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(10).getName(), Database.dbAllIngrediants.get(10).getPricePerUnit()), 250);
+        muffin.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(2).getName(), Database.dbAllIngrediants.get(2).getPricePerUnit()), 30);
+        muffin.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(3).getName(), Database.dbAllIngrediants.get(3).getPricePerUnit()), 10);
+        muffin.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(7).getName(), Database.dbAllIngrediants.get(7).getPricePerUnit()), 50);
+        muffin.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(1).getName(), Database.dbAllIngrediants.get(1).getPricePerUnit()), 1000);
 
 //        4.
         Recipe honeyHeart = new Recipe("HONEY HEART", Level.HARD);
-        honeyHeart.addIngrediantToRecipe(sugar, 200);
-        honeyHeart.addIngrediantToRecipe(flour, 400);
-        honeyHeart.addIngrediantToRecipe(milk, 200);
-        honeyHeart.addIngrediantToRecipe(jam, 100);
-        honeyHeart.addIngrediantToRecipe(oil, 20);
+        honeyHeart.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(2).getName(), Database.dbAllIngrediants.get(2).getPricePerUnit()), 200);
+        honeyHeart.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(1).getName(), Database.dbAllIngrediants.get(1).getPricePerUnit()), 400);
+        honeyHeart.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(10).getName(), Database.dbAllIngrediants.get(10).getPricePerUnit()), 200);
+        honeyHeart.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(11).getName(), Database.dbAllIngrediants.get(11).getPricePerUnit()), 100);
+        honeyHeart.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(7).getName(), Database.dbAllIngrediants.get(7).getPricePerUnit()), 20);
 
 //        5.
         Recipe souffle = new Recipe("SOUFFLE", Level.PRO);
-        souffle.addIngrediantToRecipe(sugar, 190);
-        souffle.addIngrediantToRecipe(flour, 300);
-        souffle.addIngrediantToRecipe(chocolate, 200);
-        souffle.addIngrediantToRecipe(margarine, 250);
+        souffle.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(2).getName(), Database.dbAllIngrediants.get(2).getPricePerUnit()), 190);
+        souffle.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(1).getName(), Database.dbAllIngrediants.get(1).getPricePerUnit()), 300);
+        souffle.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(12).getName(), Database.dbAllIngrediants.get(12).getPricePerUnit()), 200);
+        souffle.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(13).getName(), Database.dbAllIngrediants.get(13).getPricePerUnit()), 250);
 
 //        6.
         Recipe cheeesecake = new Recipe("CHEESECAKE", Level.HARD);
-        cheeesecake.addIngrediantToRecipe(plasmaBiscuit, 300);
-        cheeesecake.addIngrediantToRecipe(margarine, 150);
-        cheeesecake.addIngrediantToRecipe(creamCheese, 400);
-        cheeesecake.addIngrediantToRecipe(sugar, 100);
-        cheeesecake.addIngrediantToRecipe(cream, 250);
-        cheeesecake.addIngrediantToRecipe(sugar, 50);
-        cheeesecake.addIngrediantToRecipe(raspberries, 400);
+        cheeesecake.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(14).getName(), Database.dbAllIngrediants.get(14).getPricePerUnit()), 300);
+        cheeesecake.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(13).getName(), Database.dbAllIngrediants.get(13).getPricePerUnit()), 150);
+        cheeesecake.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(15).getName(), Database.dbAllIngrediants.get(15).getPricePerUnit()), 400);
+        cheeesecake.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(2).getName(), Database.dbAllIngrediants.get(2).getPricePerUnit()), 100);
+        cheeesecake.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(16).getName(), Database.dbAllIngrediants.get(16).getPricePerUnit()), 250);
+        cheeesecake.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(2).getName(), Database.dbAllIngrediants.get(2).getPricePerUnit()), 50);
+        cheeesecake.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(17).getName(), Database.dbAllIngrediants.get(17).getPricePerUnit()), 400);
 
 //        7.
         Recipe scrambledEggs = new Recipe("SCRAMBLED EGGS", Level.EASY);
-        scrambledEggs.addIngrediantToRecipe(eggs, 4);
-        scrambledEggs.addIngrediantToRecipe(oil, 10);
-        scrambledEggs.addIngrediantToRecipe(salt, 1);
+        scrambledEggs.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(5).getName(), Database.dbAllIngrediants.get(5).getPricePerUnit()), 4);
+        scrambledEggs.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(7).getName(), Database.dbAllIngrediants.get(7).getPricePerUnit()), 10);
+        scrambledEggs.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(3).getName(), Database.dbAllIngrediants.get(3).getPricePerUnit()), 1);
 
 //        8.
         Recipe sconesWithCheese = new Recipe("SCONES WITH CHEESE", Level.HARD);
-        sconesWithCheese.addIngrediantToRecipe(milk, 200);
-        sconesWithCheese.addIngrediantToRecipe(sugar, 10);
-        sconesWithCheese.addIngrediantToRecipe(flour, 300);
-        sconesWithCheese.addIngrediantToRecipe(salt, 8);
-        sconesWithCheese.addIngrediantToRecipe(eggs, 1);
+        sconesWithCheese.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(10).getName(), Database.dbAllIngrediants.get(10).getPricePerUnit()), 200);
+        sconesWithCheese.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(2).getName(), Database.dbAllIngrediants.get(2).getPricePerUnit()), 10);
+        sconesWithCheese.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(1).getName(), Database.dbAllIngrediants.get(1).getPricePerUnit()), 300);
+        sconesWithCheese.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(3).getName(), Database.dbAllIngrediants.get(3).getPricePerUnit()), 8);
+        sconesWithCheese.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(5).getName(), Database.dbAllIngrediants.get(5).getPricePerUnit()), 1);
 
 //        9.
         Recipe pizzaDough = new Recipe("PIZZA DOUGH", Level.PRO);
-        pizzaDough.addIngrediantToRecipe(flour, 300);
-        pizzaDough.addIngrediantToRecipe(oil, 15);
-        pizzaDough.addIngrediantToRecipe(salt, 8);
-        pizzaDough.addIngrediantToRecipe(sugar, 8);
+        pizzaDough.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(1).getName(), Database.dbAllIngrediants.get(1).getPricePerUnit()), 300);
+        pizzaDough.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(7).getName(), Database.dbAllIngrediants.get(7).getPricePerUnit()), 15);
+        pizzaDough.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(3).getName(), Database.dbAllIngrediants.get(3).getPricePerUnit()), 8);
+        pizzaDough.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(2).getName(), Database.dbAllIngrediants.get(2).getPricePerUnit()), 8);
 
 //        10.
         Recipe friedEggsWithHam = new Recipe("FRIED EGGS WITH HAM", Level.MEDIUM);
-        friedEggsWithHam.addIngrediantToRecipe(eggs, 3);
-        friedEggsWithHam.addIngrediantToRecipe(oil, 10);
-        friedEggsWithHam.addIngrediantToRecipe(salt, 5);
-        friedEggsWithHam.addIngrediantToRecipe(ham, 100);
+        friedEggsWithHam.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(5).getName(), Database.dbAllIngrediants.get(5).getPricePerUnit()), 3);
+        friedEggsWithHam.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(7).getName(), Database.dbAllIngrediants.get(7).getPricePerUnit()), 10);
+        friedEggsWithHam.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(3).getName(), Database.dbAllIngrediants.get(3).getPricePerUnit()), 5);
+        friedEggsWithHam.addIngrediantToRecipe(new WeightedIngredient(Database.dbAllIngrediants.get(9).getName(), Database.dbAllIngrediants.get(9).getPricePerUnit()), 100);
 
         int choice;
 
-        System.out.println("       --------------------\n~~~~~~| WELCOME TO KITCHEN |~~~~~~\n       --------------------\n");
+        System.out.println(" ".repeat(17) + "/" + "-".repeat(22) + "\\" + "\n " + "*".repeat(15) +
+                "| WELCOME TO THE KITCHEN |" + "*".repeat(15) + "\n" + " ".repeat(17) + "\\" +
+                "-".repeat(22) + "/\n");
         boolean flag = true;
         while (flag) {
+            System.out.println(" Please press:\n" + Decoration.returnLine(56));
             System.out.println("""
-                    Please press:\s
-                    --------------------------
-                        1. Open Fridge
-                        2. Make a meal
-                        3. Filter recipes
-                        4. Sorting recipes
-                        5. Favourite recipes
-                        0. Leave kitchen
-                    --------------------------""");
+                        \t1. Menu
+                        \t2. Open Fridge
+                        \t3. Make a meal
+                        \t4. Filter recipes
+                        \t5. Sorting recipes
+                        \t6. Favourite recipes
+                        \t0. Leave kitchen
+                        """ + Decoration.returnLine(56));
+            System.out.println("\n");
 
             while(!sc.hasNextInt()){  //TODO Find better solution!
                 System.out.println("Input is not valid! Enter number!");
@@ -131,17 +134,20 @@ public class Application {
                     flag = false;
                     break;
                 case 1:
+                    Database.scanRecipeDatabase();
+                    break;
+                case 2:
                     System.out.println(fridge);
                     System.out.println();
                     boolean flag2 = true;
                     while (flag2) {
+                        System.out.println(" Choose what to do:\n" + Decoration.returnLine(56));
                         System.out.println("""
-                                Choose what to do:\s
-                                --------------------------
-                                    1. Add ingrediant
-                                    2. Take ingrediant
-                                    0. Go back
-                                --------------------------""");
+                                    \t1. Add ingrediant
+                                    \t2. Take ingrediant
+                                    \t3. Generate random ingredients
+                                    \t0. Go back
+                                    """ + Decoration.returnLine(56));
                         while(!sc.hasNextInt()){
                             System.out.println("Input is not valid! Enter number!");
                             sc.nextLine();
@@ -157,6 +163,9 @@ public class Application {
                             case 2:
                                 fridge.removeFromFridge();
                                 break;
+                            case 3:
+                                fridge.fillFridge();
+                                break;
                             default:
                                 System.out.println("Choose again!");
                                 break;
@@ -164,17 +173,17 @@ public class Application {
                         System.out.println(fridge);
                     }
                     break;
-                case 2:  //TODO Finish this case when changing weight problem is solved!
+                case 3:  //TODO Create functions from this cases!
                     boolean flag3 = true;
                     while (flag3) {
+                        System.out.println(" Choose what to do:\n" + Decoration.returnLine(56));
                         System.out.println("""
-                                Choose what to do:\s
-                                ---------------------------------------------------
-                                    1. Which recipes do you have ingrediants for
-                                    2. Which scaled recipes do you have ingrediants for
-                                    3. Make meal
-                                    0. Go back
-                                ---------------------------------------------------""");
+                                    \t1. Which recipes do you have ingrediants for?
+                                    \t2. Which scaled recipes do you have ingrediants for?
+                                    \t3. Make meal
+                                    \t4. Make scaled meal
+                                    \t0. Go back
+                                    """ + Decoration.returnLine(56));
                         while(!sc.hasNextInt()){
                             System.out.println("Input is not valid! Enter number!");
                             sc.nextLine();
@@ -186,7 +195,7 @@ public class Application {
                                 break;
                             case 1:
                                 int count = 0;
-                                for (var el : Database.dbAllRecipes) {
+                                for (var el : Database.dbAllRecipes.values()) {
                                     if (fridge.canMakeMeal(el)) {
                                         count++;
                                     }
@@ -194,18 +203,39 @@ public class Application {
                                 if (count == 0) {
                                     System.out.println("You can' t make any meal!");
                                 } else {
-                                    for (var el : Database.dbAllRecipes) {
+                                    System.out.println("\nYou can make:\n" + Decoration.returnLine(35));
+                                    for (var el : Database.dbAllRecipes.values()) {
                                         if (fridge.canMakeMeal(el)) {
-                                            System.out.println(el.getName() + el.weightedIngredients);
+                                            System.out.println("\t* " + el.getName());
                                         }
                                     }
+                                    System.out.println(Decoration.returnLine(35) + "\n");
                                 }
                                 break;
                             case 2:
+                                count = 0;
+                                System.out.println("Please enter scale:\n");
+                                double percent = sc.nextDouble();
+                                for (var el : Database.dbAllRecipes.values()) {
+                                    if (fridge.canCreateScaledRecipe(el, percent)) {
+                                        count++;
+                                    }
+                                }
+                                if (count == 0) {
+                                    System.out.println("You can' t make any meal!");
+                                } else {
+                                    System.out.println("\nYou can make:\n" + Decoration.returnLine(35));
+                                    for (var el : Database.dbAllRecipes.values()) {
+                                        if (fridge.canCreateScaledRecipe(el, percent)) {
+                                            System.out.println("\t* " + el.getName());
+                                        }
+                                    }
+                                    System.out.println(Decoration.returnLine(35) + "\n");
+                                }
                                 break;
                             case 3:
                                 count = 0;
-                                for (var el : Database.dbAllRecipes) {
+                                for (var el : Database.dbAllRecipes.values()) {
                                     if (fridge.canMakeMeal(el)) {
                                         count++;
                                     }
@@ -214,7 +244,7 @@ public class Application {
                                     System.out.println("You can' t make any meal!");
                                 } else {
                                     count = 0;
-                                    for (var el : Database.dbAllRecipes) {
+                                    for (var el : Database.dbAllRecipes.values()) {
                                         if (fridge.canMakeMeal(el)) {
                                             count++;
                                             System.out.println(count + ". " + el.getName());
@@ -227,11 +257,46 @@ public class Application {
                                     sc.nextLine();
                                 }
                                 choice = sc.nextInt();
-                                for (var el : Database.dbAllRecipes) {
+                                for (var el : Database.dbAllRecipes.values()) {
                                     if (fridge.canMakeMeal(el)) {
                                         count++;
                                         if (choice == count) {
                                             fridge.makeMeal(el);
+                                        }
+                                    }
+                                }
+                                break;
+                            case 4:
+                                System.out.println("Enter scale:\n");
+                                percent = sc.nextDouble();
+                                count = 0;
+                                for (var el : Database.dbAllRecipes.values()) {
+                                    if (fridge.canCreateScaledRecipe(el, percent)) {
+                                        count++;
+                                    }
+                                }
+                                if (count == 0) {
+                                    System.out.println("You can' t make any meal!");
+                                } else {
+                                    count = 0;
+                                    for (var el : Database.dbAllRecipes.values()) {
+                                        if (fridge.canCreateScaledRecipe(el, percent)) {
+                                            count++;
+                                            System.out.println(count + ". " + el.getName());
+                                        }
+                                    }
+                                }
+                                count = 0;
+                                while(!sc.hasNextInt()){
+                                    System.out.println("Input is not valid! Enter number!");
+                                    sc.nextLine();
+                                }
+                                choice = sc.nextInt();
+                                for (var el : Database.dbAllRecipes.values()) {
+                                    if (fridge.canCreateScaledRecipe(el, percent)) {
+                                        count++;
+                                        if (choice == count) {
+                                            fridge.createScaledRecipe(el, percent);
                                         }
                                     }
                                 }
@@ -242,17 +307,16 @@ public class Application {
                         }
                     }
                     break;
-                case 3:
+                case 4:
                     boolean flag4 = true;
                     while (flag4) {
+                        System.out.println(" Choose what to do:\n" + Decoration.returnLine(56));
                         System.out.println("""
-                                Choose what to do:\s
-                                ------------------------------------------------
-                                    1. Check all recipes for specified money
-                                    2. Check all recipes with specified level
-                                    3. Combo of 1 and 2
-                                    0. Go back
-                                -------------------------------------------------""");
+                                    \t1. Check all recipes for specified money
+                                    \t2. Check all recipes with specified level
+                                    \t3. Combo of 1 and 2
+                                    \t0. Go back
+                                    """ + Decoration.returnLine(56));
                         while(!sc.hasNextInt()){
                             System.out.println("Input is not valid! Enter number!");
                             sc.nextLine();
@@ -265,12 +329,11 @@ public class Application {
                             case 1:
                                 boolean flag5 = true;
                                 while (flag5) {
+                                    System.out.println(" Filter by money:\n" + Decoration.returnLine(35));
                                     System.out.println("""
-                                            Filter by money:\s
-                                            -------------------------
-                                                1. Filter by money
-                                                0. Go back
-                                            -------------------------""");
+                                                \t1. Filter by money
+                                                \t0. Go back
+                                                """ + Decoration.returnLine(35));
                                     while(!sc.hasNextInt()){
                                         System.out.println("Input is not valid! Enter number!");
                                         sc.nextLine();
@@ -294,16 +357,15 @@ public class Application {
                             case 2:
                                 boolean flag6 = true;
                                 while (flag6) {
+                                    System.out.println(" Filter by level:\n" + Decoration.returnLine(35));
                                     System.out.println("""
-                                            Filter by level:\s
-                                            ---------------------
-                                                1. Begginer
-                                                2. Easy
-                                                3. Medium
-                                                4. Hard
-                                                5. Pro
-                                                0. Go back
-                                            ---------------------""");
+                                                \t1. Begginer
+                                                \t2. Easy
+                                                \t3. Medium
+                                                \t4. Hard
+                                                \t5. Pro
+                                                \t0. Go back
+                                                """ + Decoration.returnLine(35));
                                     while(!sc.hasNextInt()){
                                         System.out.println("Input is not valid! Enter number!");
                                         sc.nextLine();
@@ -337,16 +399,15 @@ public class Application {
                             case 3:
                                 boolean flag7 = true;
                                 while (flag7) {
+                                    System.out.println(" Filter by level and money:\n" + Decoration.returnLine(45));
                                     System.out.println("""
-                                            Filter by level and money:\s
-                                            ---------------------
-                                                1. Begginer
-                                                2. Easy
-                                                3. Medium
-                                                4. Hard
-                                                5. Pro
-                                                0. Go back
-                                            ---------------------""");
+                                                \t1. Begginer
+                                                \t2. Easy
+                                                \t3. Medium
+                                                \t4. Hard
+                                                \t5. Pro
+                                                \t0. Go back
+                                                """ + Decoration.returnLine(45));
                                     while(!sc.hasNextInt()){
                                         System.out.println("Input is not valid! Enter number!");
                                         sc.nextLine();
@@ -390,16 +451,15 @@ public class Application {
                         }
                     }
                     break;
-                case 4:
+                case 5:
                     boolean flag8 = true;
                     while (flag8) {
+                        System.out.println(" Choose what to do:\n" + Decoration.returnLine(35));
                         System.out.println("""
-                                Choose what to do:\s
-                                -------------------------------
-                                    1. Sort recipe by level
-                                    2. Sort recipe by price
-                                    0. Go back
-                                -------------------------------""");
+                                    \t1. Sort recipe by level
+                                    \t2. Sort recipe by price
+                                    \t0. Go back
+                                    """ + Decoration.returnLine(35));
                         while(!sc.hasNextInt()){
                             System.out.println("Input is not valid! Enter number!");
                             sc.nextLine();
@@ -412,13 +472,12 @@ public class Application {
                             case 1:
                                 boolean flag9 = true;
                                 while (flag9) {
+                                    System.out.println(" Choose what to do:\n" + Decoration.returnLine(35));
                                     System.out.println("""
-                                            Choose what to do:\s
-                                            -----------------------------------
-                                                1. Sort level EASY --> PRO
-                                                2. Sort level PRO --> EASY
-                                                0. Go back
-                                            -----------------------------------""");
+                                                \t1. Sort level EASY --> PRO
+                                                \t2. Sort level PRO --> EASY
+                                                \t0. Go back
+                                                """ + Decoration.returnLine(35));
                                     while(!sc.hasNextInt()){
                                         System.out.println("Input is not valid! Enter number!");
                                         sc.nextLine();
@@ -443,13 +502,12 @@ public class Application {
                             case 2:
                                 boolean flag10 = true;
                                 while (flag10) {
+                                    System.out.println(" Choose what to do:\n" + Decoration.returnLine(35));
                                     System.out.println("""
-                                            Choose what to do:\s
-                                            ----------------------------------
-                                                1. Sort price LOW --> HIGH
-                                                2. Sort price HIGH --> LOW
-                                                0. Go back
-                                            ----------------------------------""");
+                                                \t1. Sort price LOW --> HIGH
+                                                \t2. Sort price HIGH --> LOW
+                                                \t0. Go back
+                                                """ + Decoration.returnLine(35));
                                     while(!sc.hasNextInt()){
                                         System.out.println("Input is not valid! Enter number!");
                                         sc.nextLine();
@@ -477,29 +535,27 @@ public class Application {
                         }
                     }
                     break;
-                case 5:
+                case 6:
                     boolean flag11 = true;
                     while (flag11) {
                         if (Database.favouriteRecipes.isEmpty()) {
-                            System.out.println("You don't have favourites!\n");
+                            System.out.println(" You don't have favourites!\n");
                         } else {
-                            System.out.println("Your favourites:");
-                            int count = 0;
-                            System.out.println("--------------------------------------");
+                            System.out.println(" Your favourites:");
+                            System.out.println(Decoration.returnLine(46));
                             for (var el : Database.favouriteRecipes) {
-                                count++;
-                                System.out.println(count + ". " + el.getName());
+
+                                System.out.println("\t* " + el.getName());
                             }
-                            System.out.println("--------------------------------------\n");
+                            System.out.println(Decoration.returnLine(46) + "\n");
                         }
+                        System.out.println(" Choose what to do:\n" + Decoration.returnLine(46));
                         System.out.println("""
-                                Choose what to do:\s
-                                ------------------------------------------------
-                                    1. Add to favourites
-                                    2. Remove from favourites
-                                    3. Favourite recipes for specified money
-                                    0. Go back
-                                ------------------------------------------------""");
+                                    \t1. Add to favourites
+                                    \t2. Remove from favourites
+                                    \t3. Favourite recipes for specified money
+                                    \t0. Go back
+                                    """ + Decoration.returnLine(46));
                         while(!sc.hasNextInt()){
                             System.out.println("Input is not valid! Enter number!");
                             sc.nextLine();

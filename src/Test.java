@@ -1,5 +1,5 @@
 public class Test {
-    public static void main(String[] args) throws CloneNotSupportedException {
+    public static void main(String[] args) {
         WeightedIngredient flour = new WeightedIngredient("Flour", 0.25);
         WeightedIngredient sugar = new WeightedIngredient("Sugar",0.103);
         WeightedIngredient salt = new WeightedIngredient("Salt",0.055);
@@ -25,6 +25,7 @@ public class Test {
         spanishPita.addIngrediantToRecipe(yogurt, 40);
         spanishPita.addIngrediantToRecipe(eggs, 4);
         spanishPita.addIngrediantToRecipe(bakingPowder, 6);
+        spanishPita.addIngrediantToRecipe(new WeightedIngredient(flour.getName(), flour.getPricePerUnit()),500);
 
 //        2.
         Recipe fastPiroshka = new Recipe("FAST PIROSHKA", Level.BEGINNER);
